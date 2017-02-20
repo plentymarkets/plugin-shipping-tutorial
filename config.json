@@ -1,0 +1,73 @@
+[
+{
+  "tab": "General",
+  "key": "mode",
+  "label": "Mode",
+  "type": "dropdown",
+  "possibleValues": {
+    "0": "Test",
+    "1": "Productive"
+  },
+  "default": "0"
+},
+  {
+    "tab": "General",
+    "key": "username",
+    "label": "Username",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "General",
+    "key": "password",
+    "label": "Password",
+    "type": "password",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperName",
+    "label": "Name",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperStreet",
+    "label": "Street",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperNo",
+    "label": "No",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperPostalCode",
+    "label": "Postal code",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperTown",
+    "label": "Town",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "Shipper",
+    "key": "shipperCountry",
+    "label": "Country",
+    "type": "dropdown",
+    "possibleValues": {
+      "0": "Germany",
+      "1": "Austria"
+    },
+    "default": "0"
+  }
+]
