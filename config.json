@@ -1,15 +1,15 @@
 [
-{
-  "tab": "General",
-  "key": "mode",
-  "label": "Mode",
-  "type": "dropdown",
-  "possibleValues": {
-    "0": "Test",
-    "1": "Productive"
+  {
+    "tab": "General",
+    "key": "mode",
+    "label": "Mode",
+    "type": "dropdown",
+    "possibleValues": {
+      "0": "Test",
+      "1": "Productive"
+    },
+    "default": "0"
   },
-  "default": "0"
-},
   {
     "tab": "General",
     "key": "username",
