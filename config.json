@@ -25,43 +25,43 @@
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperName",
+    "tab": "Sender",
+    "key": "senderName",
     "label": "Name",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperStreet",
+    "tab": "Sender",
+    "key": "senderStreet",
     "label": "Street",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperNo",
+    "tab": "Sender",
+    "key": "senderNo",
     "label": "No",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperPostalCode",
+    "tab": "Sender",
+    "key": "senderPostalCode",
     "label": "Postal code",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperTown",
+    "tab": "Sender",
+    "key": "senderTown",
     "label": "Town",
     "type": "text",
     "default": ""
   },
   {
-    "tab": "Shipper",
-    "key": "shipperCountry",
+    "tab": "Sender",
+    "key": "senderCountry",
     "label": "Country",
     "type": "dropdown",
     "possibleValues": {
