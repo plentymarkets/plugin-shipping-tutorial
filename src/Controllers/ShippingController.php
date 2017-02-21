@@ -131,14 +131,14 @@ class ShippingController extends Controller
             $receiverTown          = $address->town;
             $receiverCountry       = $address->country->name; // or: $address->country->isoCode2
 
-            // reads shipper data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
-            $shipperName           = $this->config->get('PluginShippingTutorial.shipperName', 'plentymarkets GmbH - Timo Zenke');
-            $shipperStreet         = $this->config->get('PluginShippingTutorial.shipperStreet', 'Bürgermeister-Brunner-Str.');
-            $shipperNo             = $this->config->get('PluginShippingTutorial.shipperNo', '15');
-            $shipperPostalCode     = $this->config->get('PluginShippingTutorial.shipperPostalCode', '34117');
-            $shipperTown           = $this->config->get('PluginShippingTutorial.shipperTown', 'Kassel');
-            $shipperCountryID      = $this->config->get('PluginShippingTutorial.shipperCountry', '0');
-            $shipperCountry        = ($shipperCountryID == 0 ? 'Germany' : 'Austria');
+            // reads sender data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
+            $senderName           = $this->config->get('PluginShippingTutorial.senderName', 'plentymarkets GmbH - Timo Zenke');
+            $senderStreet         = $this->config->get('PluginShippingTutorial.senderStreet', 'Bürgermeister-Brunner-Str.');
+            $senderNo             = $this->config->get('PluginShippingTutorial.senderNo', '15');
+            $senderPostalCode     = $this->config->get('PluginShippingTutorial.senderPostalCode', '34117');
+            $senderTown           = $this->config->get('PluginShippingTutorial.senderTown', 'Kassel');
+            $senderCountryID      = $this->config->get('PluginShippingTutorial.senderCountry', '0');
+            $senderCountry        = ($senderCountryID == 0 ? 'Germany' : 'Austria');
 
             // gets order shipping packages from current order
             $packages = $this->orderShippingPackage->listOrderShippingPackages($order->id);
