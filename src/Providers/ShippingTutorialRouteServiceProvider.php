@@ -1,12 +1,12 @@
 <?php
-namespace PluginShippingTutorial\Providers;
+namespace ShippingTutorial\Providers;
 
 use Plenty\Plugin\RouteServiceProvider;
 use Plenty\Plugin\Routing\Router;
 
 /**
  * Class ShippingTutorialRouteServiceProvider
- * @package PluginShippingTutorial\Providers
+ * @package ShippingTutorial\Providers
  */
 class ShippingTutorialRouteServiceProvider extends RouteServiceProvider
 {
@@ -17,7 +17,7 @@ class ShippingTutorialRouteServiceProvider extends RouteServiceProvider
     {
         $router->post('shipment/plenty_tutorial/register_shipments', [
             'middleware' => 'oauth',
-            'uses'       => 'PluginShippingTutorial\Controllers\ShipmentController@registerShipments'
+            'uses'       => 'ShippingTutorial\Controllers\ShipmentController@registerShipments'
         ]);
   	}
 

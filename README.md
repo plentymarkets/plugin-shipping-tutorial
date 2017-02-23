@@ -3,6 +3,7 @@
 #Shipping plugin tutorial for plentymarkets 7.x
 
 This is a shipping plugin tutorial developed by plentymarkets.
+A tutorial can be found [here](https://developers.plentymarkets.com/tutorials/shipping)
 
 ##Requirements
 This is a plugin for [plentymarkets 7](https://www.plentymarkets.eu/). No other plugins are required for running the plugin.

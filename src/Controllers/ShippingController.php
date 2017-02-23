@@ -1,6 +1,6 @@
 <?php
 
-namespace PluginShippingTutorial\Controllers;
+namespace ShippingTutorial\Controllers;
 
 use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Address\Models\Address;
@@ -132,12 +132,12 @@ class ShippingController extends Controller
             $receiverCountry       = $address->country->name; // or: $address->country->isoCode2
 
             // reads sender data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
-            $senderName           = $this->config->get('PluginShippingTutorial.senderName', 'plentymarkets GmbH - Timo Zenke');
-            $senderStreet         = $this->config->get('PluginShippingTutorial.senderStreet', 'Bürgermeister-Brunner-Str.');
-            $senderNo             = $this->config->get('PluginShippingTutorial.senderNo', '15');
-            $senderPostalCode     = $this->config->get('PluginShippingTutorial.senderPostalCode', '34117');
-            $senderTown           = $this->config->get('PluginShippingTutorial.senderTown', 'Kassel');
-            $senderCountryID      = $this->config->get('PluginShippingTutorial.senderCountry', '0');
+            $senderName           = $this->config->get('ShippingTutorial.senderName', 'plentymarkets GmbH - Timo Zenke');
+            $senderStreet         = $this->config->get('ShippingTutorial.senderStreet', 'Bürgermeister-Brunner-Str.');
+            $senderNo             = $this->config->get('ShippingTutorial.senderNo', '15');
+            $senderPostalCode     = $this->config->get('ShippingTutorial.senderPostalCode', '34117');
+            $senderTown           = $this->config->get('ShippingTutorial.senderTown', 'Kassel');
+            $senderCountryID      = $this->config->get('ShippingTutorial.senderCountry', '0');
             $senderCountry        = ($senderCountryID == 0 ? 'Germany' : 'Austria');
 
             // gets order shipping packages from current order
@@ -159,7 +159,7 @@ class ShippingController extends Controller
                 try
                 {
                     // check wether we are in test or productive mode, use different login or connection data
-                    $mode = $this->config->get('PluginShippingTutorial.mode', '0');
+                    $mode = $this->config->get('ShippingTutorial.mode', '0');
 
                     // shipping service providers API should be used here
                     $response = [
@@ -278,7 +278,7 @@ class ShippingController extends Controller
 
 		// Close the cURL resource, and free system resources
 		curl_close($ch);
-		return $this->storageRepository->uploadObject('PluginShippingTutorial', $key, $output);
+		return $this->storageRepository->uploadObject('ShippingTutorial', $key, $output);
 
 	}
 
@@ -338,7 +338,7 @@ class ShippingController extends Controller
 		$data = [
 			'orderId' => $orderId,
 			'transactionId' => implode(',', $transactionIds),
-			'shippingServiceProvider' => 'PluginShippingTutorial',
+			'shippingServiceProvider' => 'ShippingTutorial',
 			'shippingStatus' => 'registered',
 			'shippingCosts' => 0.00,
 			'additionalData' => $shipmentItems,

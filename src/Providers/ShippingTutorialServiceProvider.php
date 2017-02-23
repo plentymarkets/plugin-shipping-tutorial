@@ -1,12 +1,12 @@
 <?php
-namespace PluginShippingTutorial\Providers;
+namespace ShippingTutorial\Providers;
 
 use Plenty\Modules\Order\Shipping\ServiceProvider\Services\ShippingServiceProviderService;
 use Plenty\Plugin\ServiceProvider;
 
 /**
  * Class ShippingTutorialServiceProvider
- * @package PluginShippingTutorial\Providers
+ * @package ShippingTutorial\Providers
  */
 class ShippingTutorialServiceProvider extends ServiceProvider
 {
@@ -24,11 +24,11 @@ class ShippingTutorialServiceProvider extends ServiceProvider
     {
 
         $shippingServiceProviderService->registerShippingProvider(
-            'PluginShippingTutorial',
+            'ShippingTutorial',
             ['de' => '*** Plenty shipping tutorial ***', 'en' => '*** Plenty shipping tutorial ***'],
             [
-                'PluginShippingTutorial\\Controllers\\ShippingController@registerShipments',
-                'PluginShippingTutorial\\Controllers\\ShippingController@deleteShipments',
+                'ShippingTutorial\\Controllers\\ShippingController@registerShipments',
+                'ShippingTutorial\\Controllers\\ShippingController@deleteShipments',
             ]);
     }
 }
