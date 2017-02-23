@@ -2,8 +2,8 @@
 
 #Shipping plugin tutorial for plentymarkets 7.x
 
-This is a shipping plugin tutorial developed by plentymarkets.
-A tutorial can be found [here](https://developers.plentymarkets.com/tutorials/shipping)
+This is a shipping plugin tutorial developed by plentymarkets. Integrate a shipping service provider in plentymarkets and register shipments.
+
 
 ##Requirements
 This is a plugin for [plentymarkets 7](https://www.plentymarkets.eu/). No other plugins are required for running the plugin.
@@ -12,7 +12,7 @@ This is a plugin for [plentymarkets 7](https://www.plentymarkets.eu/). No other 
 For detailed information about plugin provisioning refer to [plentymarkets developers](https://developers.plentymarkets.com/dev-doc/basics#plugin-provisioning).
 
 ##Plugin documentation
-* User guide [insert link here when ready]
+* Click [here](https://developers.plentymarkets.com/tutorials/shipping) to open the tutorial
 * Overview of [plentymarkets plugin interface](https://developers.plentymarkets.com/dev-doc/basics#guide-interface)
 * Learn how to [provision plugins](https://developers.plentymarkets.com/dev-doc/basics#plugin-provisioning)
 
