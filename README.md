@@ -23,4 +23,4 @@ Sign up today and become a member of our [forum](https://forum.plentymarkets.com
 Find the latest news such as added or removed features and functions, changes made to existing functionality, bug fixes and fixed issues in our [Changelog](https://github.com/plentymarkets/plugin-shipping-tutorial/blob/master/meta/documents/changelog_en.md).
 
 ##License
-This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE - see the [License.md](https://github.com/plentymarkets/plugin-dhl-gk/blob/master/License.md) file for details.
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE - see the [License.md](https://github.com/plentymarkets/plugin-shipping-tutorial/blob/master/License.md) file for details.
