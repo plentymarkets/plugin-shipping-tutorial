@@ -2,7 +2,8 @@
 
 #Shipping plugin tutorial for plentymarkets 7.x
 
-This is a shipping plugin tutorial developed by plentymarkets.
+This is a shipping plugin tutorial developed by plentymarkets. Integrate a shipping service provider in plentymarkets and register shipments.
+
 
 ##Requirements
 This is a plugin for [plentymarkets 7](https://www.plentymarkets.eu/). No other plugins are required for running the plugin.
@@ -11,7 +12,7 @@ This is a plugin for [plentymarkets 7](https://www.plentymarkets.eu/). No other 
 For detailed information about plugin provisioning refer to [plentymarkets developers](https://developers.plentymarkets.com/dev-doc/basics#plugin-provisioning).
 
 ##Plugin documentation
-* User guide [insert link here when ready]
+* Click [here](https://developers.plentymarkets.com/tutorials/shipping) to open the tutorial
 * Overview of [plentymarkets plugin interface](https://developers.plentymarkets.com/dev-doc/basics#guide-interface)
 * Learn how to [provision plugins](https://developers.plentymarkets.com/dev-doc/basics#plugin-provisioning)
 
@@ -22,4 +23,4 @@ Sign up today and become a member of our [forum](https://forum.plentymarkets.com
 Find the latest news such as added or removed features and functions, changes made to existing functionality, bug fixes and fixed issues in our [Changelog](https://github.com/plentymarkets/plugin-shipping-tutorial/blob/master/meta/documents/changelog_en.md).
 
 ##License
-This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE - see the [License.md](https://github.com/plentymarkets/plugin-dhl-gk/blob/master/License.md) file for details.
+This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE - see the [License.md](https://github.com/plentymarkets/plugin-shipping-tutorial/blob/master/License.md) file for details.
