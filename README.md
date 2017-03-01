@@ -2,7 +2,7 @@
 
 #Shipping plugin tutorial for plentymarkets 7.x
 
-This is a shipping plugin tutorial developed by plentymarkets. Integrate a shipping service provider in plentymarkets and register shipments.
+This is a shipping plugin tutorial developed by plentymarkets. Use this tutorial as an example to integrate a shipping service provider in plentymarkets and register shipments via the shipping centre or the plentymarkets Client.
 
 
 ##Requirements
