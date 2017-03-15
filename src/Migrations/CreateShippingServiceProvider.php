@@ -24,7 +24,6 @@ class CreateShippingServiceProvider
 	 */
 	public function run()
 	{
-		$this->shippingServiceProviderRepository->saveShippingServiceProvider(
-			['pluginName' => 'ShippingTutorial', 'name' => 'ShippingTutorial']);
+		$this->shippingServiceProviderRepository->saveShippingServiceProvider('ShippingTutorial','plentymarkets ShippingTutorial');
 	}
 }
