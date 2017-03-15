@@ -173,8 +173,14 @@ class ShippingController extends Controller
 
 		$this->config = $config;
 
-        $this->partnerCredentials = pluginApp(PartnerCredentialType::class,['DPD Sandbox', 'XXX']); //TODO set partner credentials
-        $this->userCredentials = pluginApp(UserCredentialType::class,['1234', 'XXXX']); // TODO: fetch credentials from settings
+		// Get credential by UI config
+        $partnerCredentialsName     = $this->config->get('ShippingTutorial.partnerName');
+        $partnerCredentialsToken    = $this->config->get('ShippingTutorial.partnerToken');
+        $userCredentialsName        = $this->config->get('ShippingTutorial.userName');
+        $userCredentialsToken       = $this->config->get('ShippingTutorial.userToken');
+
+        $this->partnerCredentials = pluginApp(PartnerCredentialType::class,[$partnerCredentialsName, $partnerCredentialsToken]);
+        $this->userCredentials = pluginApp(UserCredentialType::class,[$userCredentialsName, $userCredentialsToken]);
 	}
 
 

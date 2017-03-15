@@ -12,15 +12,29 @@
   },
   {
     "tab": "General",
-    "key": "username",
-    "label": "Username",
+    "key": "partnerName",
+    "label": "Partner Name",
     "type": "text",
     "default": ""
   },
   {
     "tab": "General",
-    "key": "password",
-    "label": "Password",
+    "key": "partnerToken",
+    "label": "Partner Token",
+    "type": "password",
+    "default": ""
+  },
+  {
+    "tab": "General",
+    "key": "userName",
+    "label": "Cloud User ID",
+    "type": "text",
+    "default": ""
+  },
+  {
+    "tab": "General",
+    "key": "userToken",
+    "label": "User Token",
     "type": "password",
     "default": ""
   },

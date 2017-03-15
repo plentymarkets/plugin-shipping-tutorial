@@ -1,6 +1,6 @@
 <?php
 
-namespace DPD\Procedures;
+namespace ShippingTutorial\Procedures;
 
 use Plenty\Modules\EventProcedures\Events\EventProceduresTriggered;
 use Plenty\Modules\Order\Contracts\OrderRepositoryContract;
