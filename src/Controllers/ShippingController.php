@@ -15,6 +15,7 @@ use Plenty\Modules\Plugin\Storage\Contracts\StorageRepositoryContract;
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
 use Plenty\Plugin\ConfigRepository;
+use ShippingTutorial\API\OrderSettingsType;
 
 /**
  * Class ShippingController
@@ -113,6 +114,14 @@ class ShippingController extends Controller
 		$orderIds = $this->getOrderIds($request, $orderIds);
 		$orderIds = $this->getOpenOrderIds($orderIds);
 		$shipmentDate = date('Y-m-d');
+
+        $orderSettingsType = pluginApp(OrderSettingsType::class,
+            array(
+                $shipmentDate,
+                $labelSize,
+                $labelStartPosition
+            )
+        );
 
 		foreach($orderIds as $orderId)
 		{

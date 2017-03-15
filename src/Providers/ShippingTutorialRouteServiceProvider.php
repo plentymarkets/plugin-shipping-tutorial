@@ -19,6 +19,13 @@ class ShippingTutorialRouteServiceProvider extends RouteServiceProvider
             'middleware' => 'oauth',
             'uses'       => 'ShippingTutorial\Controllers\ShipmentController@registerShipments'
         ]);
+
+        // Example for webshop template
+        $router->post('shipment/plenty_tutorial/find-parcel-shop-by-address', [
+            'middleware' => 'oauth',
+            'uses'       => 'DPD\Controllers\DPDController@findParcelShopByAddress'
+        ]);
+
   	}
 
 }
