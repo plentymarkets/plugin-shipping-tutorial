@@ -2,7 +2,7 @@
 
 namespace ShippingTutorial\Controllers;
 
-use DPD\API\setOrder;
+use ShippingTutorial\API\setOrder;
 use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Address\Models\Address;
 use Plenty\Modules\Cloud\Storage\Models\StorageObject;

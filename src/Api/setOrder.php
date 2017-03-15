@@ -1,6 +1,6 @@
 <?php
 
-namespace DPD\API;
+namespace ShippingTutorial\API;
 
 class setOrder
 {
