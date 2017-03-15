@@ -46,7 +46,7 @@ class CODType
 
     /**
      * @param string $Purpose
-     * @return \DPD\API\CODType
+     * @return \ShippingTutorial\API\CODType
      */
     public function setPurpose($Purpose)
     {
@@ -64,7 +64,7 @@ class CODType
 
     /**
      * @param float $Amount
-     * @return \DPD\API\CODType
+     * @return \ShippingTutorial\API\CODType
      */
     public function setAmount($Amount)
     {
@@ -82,7 +82,7 @@ class CODType
 
     /**
      * @param PaymentType $Payment
-     * @return \DPD\API\CODType
+     * @return \ShippingTutorial\API\CODType
      */
     public function setPayment($Payment)
     {

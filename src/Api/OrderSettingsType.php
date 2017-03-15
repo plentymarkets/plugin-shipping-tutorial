@@ -46,7 +46,7 @@ class OrderSettingsType
 
     /**
      * @param dateTime $ShipDate
-     * @return \DPD\API\OrderSettingsType
+     * @return \ShippingTutorial\API\OrderSettingsType
      */
     public function setShipDate($ShipDate)
     {
@@ -64,7 +64,7 @@ class OrderSettingsType
 
     /**
      * @param LabelSizeType $LabelSize
-     * @return \DPD\API\OrderSettingsType
+     * @return \ShippingTutorial\API\OrderSettingsType
      */
     public function setLabelSize($LabelSize)
     {
@@ -82,7 +82,7 @@ class OrderSettingsType
 
     /**
      * @param LabelStartPositionType $LabelStartPosition
-     * @return \DPD\API\OrderSettingsType
+     * @return \ShippingTutorial\API\OrderSettingsType
      */
     public function setLabelStartPosition($LabelStartPosition)
     {

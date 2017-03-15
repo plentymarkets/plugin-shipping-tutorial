@@ -38,7 +38,7 @@ class PartnerCredentialType
 
     /**
      * @param string $Name
-     * @return \DPD\API\PartnerCredentialType
+     * @return \ShippingTutorial\API\PartnerCredentialType
      */
     public function setName($Name)
     {
@@ -56,7 +56,7 @@ class PartnerCredentialType
 
     /**
      * @param string $Token
-     * @return \DPD\API\PartnerCredentialType
+     * @return \ShippingTutorial\API\PartnerCredentialType
      */
     public function setToken($Token)
     {

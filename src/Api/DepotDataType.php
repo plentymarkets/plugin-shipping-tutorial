@@ -46,7 +46,7 @@ class DepotDataType
 
     /**
      * @param string $Depot
-     * @return \DPD\API\DepotDataType
+     * @return \ShippingTutorial\API\DepotDataType
      */
     public function setDepot($Depot)
     {
@@ -64,7 +64,7 @@ class DepotDataType
 
     /**
      * @param GeoDataType $GeoData
-     * @return \DPD\API\DepotDataType
+     * @return \ShippingTutorial\API\DepotDataType
      */
     public function setGeoData($GeoData)
     {
@@ -82,7 +82,7 @@ class DepotDataType
 
     /**
      * @param AddressType $Address
-     * @return \DPD\API\DepotDataType
+     * @return \ShippingTutorial\API\DepotDataType
      */
     public function setAddress($Address)
     {

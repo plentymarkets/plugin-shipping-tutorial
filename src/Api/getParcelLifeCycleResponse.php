@@ -30,7 +30,7 @@ class getParcelLifeCycleResponse
 
     /**
      * @param getParcelLifeCycleResponseType $getParcelLifeCycleResult
-     * @return \DPD\API\getParcelLifeCycleResponse
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponse
      */
     public function setGetParcelLifeCycleResult($getParcelLifeCycleResult)
     {

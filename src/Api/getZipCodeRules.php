@@ -30,7 +30,7 @@ class getZipCodeRules
 
     /**
      * @param getZipCodeRulesRequestType $getZipCodeRulesRequest
-     * @return \DPD\API\getZipCodeRules
+     * @return \ShippingTutorial\API\getZipCodeRules
      */
     public function setGetZipCodeRulesRequest($getZipCodeRulesRequest)
     {

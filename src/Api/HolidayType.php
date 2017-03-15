@@ -38,7 +38,7 @@ class HolidayType
 
     /**
      * @param dateTime $HolidayFrom
-     * @return \DPD\API\HolidayType
+     * @return \ShippingTutorial\API\HolidayType
      */
     public function setHolidayFrom($HolidayFrom)
     {
@@ -56,7 +56,7 @@ class HolidayType
 
     /**
      * @param dateTime $HolidayEnd
-     * @return \DPD\API\HolidayType
+     * @return \ShippingTutorial\API\HolidayType
      */
     public function setHolidayEnd($HolidayEnd)
     {

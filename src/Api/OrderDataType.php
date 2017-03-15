@@ -46,7 +46,7 @@ class OrderDataType
 
     /**
      * @param AddressType $ShipAddress
-     * @return \DPD\API\OrderDataType
+     * @return \ShippingTutorial\API\OrderDataType
      */
     public function setShipAddress($ShipAddress)
     {
@@ -64,7 +64,7 @@ class OrderDataType
 
     /**
      * @param int $ParcelShopID
-     * @return \DPD\API\OrderDataType
+     * @return \ShippingTutorial\API\OrderDataType
      */
     public function setParcelShopID($ParcelShopID)
     {
@@ -82,7 +82,7 @@ class OrderDataType
 
     /**
      * @param ParcelDataType $ParcelData
-     * @return \DPD\API\OrderDataType
+     * @return \ShippingTutorial\API\OrderDataType
      */
     public function setParcelData($ParcelData)
     {

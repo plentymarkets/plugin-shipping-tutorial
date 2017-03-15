@@ -62,7 +62,7 @@ class SearchAddressType
 
     /**
      * @param string $Street
-     * @return \DPD\API\SearchAddressType
+     * @return \ShippingTutorial\API\SearchAddressType
      */
     public function setStreet($Street)
     {
@@ -80,7 +80,7 @@ class SearchAddressType
 
     /**
      * @param string $HouseNo
-     * @return \DPD\API\SearchAddressType
+     * @return \ShippingTutorial\API\SearchAddressType
      */
     public function setHouseNo($HouseNo)
     {
@@ -98,7 +98,7 @@ class SearchAddressType
 
     /**
      * @param string $ZipCode
-     * @return \DPD\API\SearchAddressType
+     * @return \ShippingTutorial\API\SearchAddressType
      */
     public function setZipCode($ZipCode)
     {
@@ -116,7 +116,7 @@ class SearchAddressType
 
     /**
      * @param string $City
-     * @return \DPD\API\SearchAddressType
+     * @return \ShippingTutorial\API\SearchAddressType
      */
     public function setCity($City)
     {
@@ -134,7 +134,7 @@ class SearchAddressType
 
     /**
      * @param string $Country
-     * @return \DPD\API\SearchAddressType
+     * @return \ShippingTutorial\API\SearchAddressType
      */
     public function setCountry($Country)
     {

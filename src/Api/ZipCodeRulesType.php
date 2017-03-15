@@ -78,7 +78,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $Country
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setCountry($Country)
     {
@@ -96,7 +96,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $ZipCode
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setZipCode($ZipCode)
     {
@@ -114,7 +114,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $NoPickupDays
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setNoPickupDays($NoPickupDays)
     {
@@ -132,7 +132,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $ExpressCutOff
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setExpressCutOff($ExpressCutOff)
     {
@@ -150,7 +150,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $ClassicCutOff
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setClassicCutOff($ClassicCutOff)
     {
@@ -168,7 +168,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $PickupDepot
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setPickupDepot($PickupDepot)
     {
@@ -186,7 +186,7 @@ class ZipCodeRulesType
 
     /**
      * @param string $State
-     * @return \DPD\API\ZipCodeRulesType
+     * @return \ShippingTutorial\API\ZipCodeRulesType
      */
     public function setState($State)
     {

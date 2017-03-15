@@ -94,7 +94,7 @@ class ParcelShopType
 
     /**
      * @param int $ParcelShopID
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setParcelShopID($ParcelShopID)
     {
@@ -112,7 +112,7 @@ class ParcelShopType
 
     /**
      * @param AddressType $ShopAddress
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setShopAddress($ShopAddress)
     {
@@ -130,7 +130,7 @@ class ParcelShopType
 
     /**
      * @param string $Homepage
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setHomepage($Homepage)
     {
@@ -148,7 +148,7 @@ class ParcelShopType
 
     /**
      * @param GeoDataType $GeoData
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setGeoData($GeoData)
     {
@@ -166,7 +166,7 @@ class ParcelShopType
 
     /**
      * @param string $ExpressCutOff
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setExpressCutOff($ExpressCutOff)
     {
@@ -184,7 +184,7 @@ class ParcelShopType
 
     /**
      * @param ShopServiceType[] $ShopServiceList
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setShopServiceList($ShopServiceList)
     {
@@ -202,7 +202,7 @@ class ParcelShopType
 
     /**
      * @param OpeningHoursType[] $OpeningHoursList
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setOpeningHoursList($OpeningHoursList)
     {
@@ -220,7 +220,7 @@ class ParcelShopType
 
     /**
      * @param HolidayType[] $HolidayList
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setHolidayList($HolidayList)
     {
@@ -238,7 +238,7 @@ class ParcelShopType
 
     /**
      * @param string $ExtraInfo
-     * @return \DPD\API\ParcelShopType
+     * @return \ShippingTutorial\API\ParcelShopType
      */
     public function setExtraInfo($ExtraInfo)
     {

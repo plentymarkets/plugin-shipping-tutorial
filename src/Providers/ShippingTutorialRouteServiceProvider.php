@@ -20,10 +20,10 @@ class ShippingTutorialRouteServiceProvider extends RouteServiceProvider
             'uses'       => 'ShippingTutorial\Controllers\ShipmentController@registerShipments'
         ]);
 
-        // Example for webshop template
+        // Example route for rest call from webshop template
         $router->post('shipment/plenty_tutorial/find-parcel-shop-by-address', [
             'middleware' => 'oauth',
-            'uses'       => 'DPD\Controllers\DPDController@findParcelShopByAddress'
+            'uses'       => 'ShippingTutorial\Controllers\ShippingTutorial@findParcelShopByAddress'
         ]);
 
   	}

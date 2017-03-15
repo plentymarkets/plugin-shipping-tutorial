@@ -126,7 +126,7 @@ class OrderInformationType
 
     /**
      * @param string $ParcelNo
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setParcelNo($ParcelNo)
     {
@@ -144,7 +144,7 @@ class OrderInformationType
 
     /**
      * @param string $MPSID
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setMPSID($MPSID)
     {
@@ -162,7 +162,7 @@ class OrderInformationType
 
     /**
      * @param int $ServiceCode
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setServiceCode($ServiceCode)
     {
@@ -180,7 +180,7 @@ class OrderInformationType
 
     /**
      * @param string $ProductName
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setProductName($ProductName)
     {
@@ -198,7 +198,7 @@ class OrderInformationType
 
     /**
      * @param string $Reference
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setReference($Reference)
     {
@@ -216,7 +216,7 @@ class OrderInformationType
 
     /**
      * @param string $Weight
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setWeight($Weight)
     {
@@ -234,7 +234,7 @@ class OrderInformationType
 
     /**
      * @param string $CODAmount
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setCODAmount($CODAmount)
     {
@@ -252,7 +252,7 @@ class OrderInformationType
 
     /**
      * @param int $Collis
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setCollis($Collis)
     {
@@ -270,7 +270,7 @@ class OrderInformationType
 
     /**
      * @param string $ParcelNoList
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setParcelNoList($ParcelNoList)
     {
@@ -288,7 +288,7 @@ class OrderInformationType
 
     /**
      * @param boolean $CompleteDelivery
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setCompleteDelivery($CompleteDelivery)
     {
@@ -306,7 +306,7 @@ class OrderInformationType
 
     /**
      * @param string $ReceiverName
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setReceiverName($ReceiverName)
     {
@@ -324,7 +324,7 @@ class OrderInformationType
 
     /**
      * @param string $SenderName
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setSenderName($SenderName)
     {
@@ -342,7 +342,7 @@ class OrderInformationType
 
     /**
      * @param string $EstimatedDeliveryTime
-     * @return \DPD\API\OrderInformationType
+     * @return \ShippingTutorial\API\OrderInformationType
      */
     public function setEstimatedDeliveryTime($EstimatedDeliveryTime)
     {

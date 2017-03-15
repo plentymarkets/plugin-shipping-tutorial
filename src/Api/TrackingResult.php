@@ -46,7 +46,7 @@ class TrackingResult
 
     /**
      * @param ShipmentInfo $shipmentInfo
-     * @return \DPD\API\TrackingResult
+     * @return \ShippingTutorial\API\TrackingResult
      */
     public function setShipmentInfo($shipmentInfo)
     {
@@ -64,7 +64,7 @@ class TrackingResult
 
     /**
      * @param StatusInfo[] $statusInfo
-     * @return \DPD\API\TrackingResult
+     * @return \ShippingTutorial\API\TrackingResult
      */
     public function setStatusInfo($statusInfo)
     {
@@ -82,7 +82,7 @@ class TrackingResult
 
     /**
      * @param ContentItem[] $contactInfo
-     * @return \DPD\API\TrackingResult
+     * @return \ShippingTutorial\API\TrackingResult
      */
     public function setContactInfo($contactInfo)
     {

@@ -78,7 +78,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setVersion($Version)
     {
@@ -96,7 +96,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setLanguage($Language)
     {
@@ -114,7 +114,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param boolean $Ack
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setAck($Ack)
     {
@@ -132,7 +132,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param dateTime $TimeStamp
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setTimeStamp($TimeStamp)
     {
@@ -150,7 +150,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param ZipCodeRulesType $ZipCodeRules
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setZipCodeRules($ZipCodeRules)
     {
@@ -168,7 +168,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param string $SystemInformation
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setSystemInformation($SystemInformation)
     {
@@ -186,7 +186,7 @@ class getZipCodeRulesResponseType
 
     /**
      * @param ErrorDataType[] $ErrorDataList
-     * @return \DPD\API\getZipCodeRulesResponseType
+     * @return \ShippingTutorial\API\getZipCodeRulesResponseType
      */
     public function setErrorDataList($ErrorDataList)
     {

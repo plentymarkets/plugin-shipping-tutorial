@@ -70,7 +70,7 @@ class getOrderStatusRequestType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setVersion($Version)
     {
@@ -88,7 +88,7 @@ class getOrderStatusRequestType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setLanguage($Language)
     {
@@ -106,7 +106,7 @@ class getOrderStatusRequestType
 
     /**
      * @param PartnerCredentialType $PartnerCredentials
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setPartnerCredentials($PartnerCredentials)
     {
@@ -124,7 +124,7 @@ class getOrderStatusRequestType
 
     /**
      * @param UserCredentialType $UserCredentials
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setUserCredentials($UserCredentials)
     {
@@ -142,7 +142,7 @@ class getOrderStatusRequestType
 
     /**
      * @param string $ParcelNo
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setParcelNo($ParcelNo)
     {
@@ -160,7 +160,7 @@ class getOrderStatusRequestType
 
     /**
      * @param string $DeliveryZipCode
-     * @return \DPD\API\getOrderStatusRequestType
+     * @return \ShippingTutorial\API\getOrderStatusRequestType
      */
     public function setDeliveryZipCode($DeliveryZipCode)
     {

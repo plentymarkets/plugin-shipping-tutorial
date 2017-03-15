@@ -38,7 +38,7 @@ class TrackingProperty
 
     /**
      * @param string $key
-     * @return \DPD\API\TrackingProperty
+     * @return \ShippingTutorial\API\TrackingProperty
      */
     public function setKey($key)
     {
@@ -56,7 +56,7 @@ class TrackingProperty
 
     /**
      * @param string $value
-     * @return \DPD\API\TrackingProperty
+     * @return \ShippingTutorial\API\TrackingProperty
      */
     public function setValue($value)
     {
