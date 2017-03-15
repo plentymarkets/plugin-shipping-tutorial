@@ -54,7 +54,7 @@ class getZipCodeRulesRequestType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getZipCodeRulesRequestType
+     * @return \ShippingTutorial\API\getZipCodeRulesRequestType
      */
     public function setVersion($Version)
     {
@@ -72,7 +72,7 @@ class getZipCodeRulesRequestType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getZipCodeRulesRequestType
+     * @return \ShippingTutorial\API\getZipCodeRulesRequestType
      */
     public function setLanguage($Language)
     {
@@ -90,7 +90,7 @@ class getZipCodeRulesRequestType
 
     /**
      * @param PartnerCredentialType $PartnerCredentials
-     * @return \DPD\API\getZipCodeRulesRequestType
+     * @return \ShippingTutorial\API\getZipCodeRulesRequestType
      */
     public function setPartnerCredentials($PartnerCredentials)
     {
@@ -108,7 +108,7 @@ class getZipCodeRulesRequestType
 
     /**
      * @param UserCredentialType $UserCredentials
-     * @return \DPD\API\getZipCodeRulesRequestType
+     * @return \ShippingTutorial\API\getZipCodeRulesRequestType
      */
     public function setUserCredentials($UserCredentials)
     {

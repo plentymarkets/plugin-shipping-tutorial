@@ -78,7 +78,7 @@ class setOrderResponseType
 
     /**
      * @param int $Version
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setVersion($Version)
     {
@@ -96,7 +96,7 @@ class setOrderResponseType
 
     /**
      * @param string $Language
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setLanguage($Language)
     {
@@ -114,7 +114,7 @@ class setOrderResponseType
 
     /**
      * @param boolean $Ack
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setAck($Ack)
     {
@@ -132,7 +132,7 @@ class setOrderResponseType
 
     /**
      * @param dateTime $TimeStamp
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setTimeStamp($TimeStamp)
     {
@@ -150,7 +150,7 @@ class setOrderResponseType
 
     /**
      * @param LabelResponseType $LabelResponse
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setLabelResponse($LabelResponse)
     {
@@ -168,7 +168,7 @@ class setOrderResponseType
 
     /**
      * @param string $SystemInformation
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setSystemInformation($SystemInformation)
     {
@@ -186,7 +186,7 @@ class setOrderResponseType
 
     /**
      * @param ErrorDataType[] $ErrorDataList
-     * @return \DPD\API\setOrderResponseType
+     * @return \ShippingTutorial\API\setOrderResponseType
      */
     public function setErrorDataList($ErrorDataList)
     {

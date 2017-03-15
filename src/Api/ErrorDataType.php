@@ -54,7 +54,7 @@ class ErrorDataType
 
     /**
      * @param int $ErrorID
-     * @return \DPD\API\ErrorDataType
+     * @return \ShippingTutorial\API\ErrorDataType
      */
     public function setErrorID($ErrorID)
     {
@@ -72,7 +72,7 @@ class ErrorDataType
 
     /**
      * @param string $ErrorCode
-     * @return \DPD\API\ErrorDataType
+     * @return \ShippingTutorial\API\ErrorDataType
      */
     public function setErrorCode($ErrorCode)
     {
@@ -90,7 +90,7 @@ class ErrorDataType
 
     /**
      * @param string $ErrorMsgShort
-     * @return \DPD\API\ErrorDataType
+     * @return \ShippingTutorial\API\ErrorDataType
      */
     public function setErrorMsgShort($ErrorMsgShort)
     {
@@ -108,7 +108,7 @@ class ErrorDataType
 
     /**
      * @param string $ErrorMsgLong
-     * @return \DPD\API\ErrorDataType
+     * @return \ShippingTutorial\API\ErrorDataType
      */
     public function setErrorMsgLong($ErrorMsgLong)
     {

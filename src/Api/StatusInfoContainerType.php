@@ -62,7 +62,7 @@ class StatusInfoContainerType
 
     /**
      * @param StatusInfoType $Start
-     * @return \DPD\API\StatusInfoContainerType
+     * @return \ShippingTutorial\API\StatusInfoContainerType
      */
     public function setStart($Start)
     {
@@ -80,7 +80,7 @@ class StatusInfoContainerType
 
     /**
      * @param StatusInfoType $OnTheRoad
-     * @return \DPD\API\StatusInfoContainerType
+     * @return \ShippingTutorial\API\StatusInfoContainerType
      */
     public function setOnTheRoad($OnTheRoad)
     {
@@ -98,7 +98,7 @@ class StatusInfoContainerType
 
     /**
      * @param StatusInfoType $DeliveryDepot
-     * @return \DPD\API\StatusInfoContainerType
+     * @return \ShippingTutorial\API\StatusInfoContainerType
      */
     public function setDeliveryDepot($DeliveryDepot)
     {
@@ -116,7 +116,7 @@ class StatusInfoContainerType
 
     /**
      * @param StatusInfoType $CarLoad
-     * @return \DPD\API\StatusInfoContainerType
+     * @return \ShippingTutorial\API\StatusInfoContainerType
      */
     public function setCarLoad($CarLoad)
     {
@@ -134,7 +134,7 @@ class StatusInfoContainerType
 
     /**
      * @param StatusInfoType $Delivered
-     * @return \DPD\API\StatusInfoContainerType
+     * @return \ShippingTutorial\API\StatusInfoContainerType
      */
     public function setDelivered($Delivered)
     {

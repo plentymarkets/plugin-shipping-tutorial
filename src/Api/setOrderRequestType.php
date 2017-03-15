@@ -78,7 +78,7 @@ class setOrderRequestType
 
     /**
      * @param int $Version
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setVersion($Version)
     {
@@ -96,7 +96,7 @@ class setOrderRequestType
 
     /**
      * @param string $Language
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setLanguage($Language)
     {
@@ -114,7 +114,7 @@ class setOrderRequestType
 
     /**
      * @param PartnerCredentialType $PartnerCredentials
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setPartnerCredentials($PartnerCredentials)
     {
@@ -132,7 +132,7 @@ class setOrderRequestType
 
     /**
      * @param UserCredentialType $UserCredentials
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setUserCredentials($UserCredentials)
     {
@@ -150,7 +150,7 @@ class setOrderRequestType
 
     /**
      * @param OrderActionType $OrderAction
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setOrderAction($OrderAction)
     {
@@ -168,7 +168,7 @@ class setOrderRequestType
 
     /**
      * @param OrderSettingsType $OrderSettings
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setOrderSettings($OrderSettings)
     {
@@ -186,7 +186,7 @@ class setOrderRequestType
 
     /**
      * @param OrderDataType[] $OrderDataList
-     * @return \DPD\API\setOrderRequestType
+     * @return \ShippingTutorial\API\setOrderRequestType
      */
     public function setOrderDataList($OrderDataList)
     {

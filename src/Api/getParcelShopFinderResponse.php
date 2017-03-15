@@ -30,7 +30,7 @@ class getParcelShopFinderResponse
 
     /**
      * @param getParcelShopFinderResponseType $getParcelShopFinderResult
-     * @return \DPD\API\getParcelShopFinderResponse
+     * @return \ShippingTutorial\API\getParcelShopFinderResponse
      */
     public function setGetParcelShopFinderResult($getParcelShopFinderResult)
     {

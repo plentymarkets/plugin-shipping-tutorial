@@ -86,7 +86,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setVersion($Version)
     {
@@ -104,7 +104,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setLanguage($Language)
     {
@@ -122,7 +122,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param boolean $Ack
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setAck($Ack)
     {
@@ -140,7 +140,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param dateTime $TimeStamp
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setTimeStamp($TimeStamp)
     {
@@ -158,7 +158,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param int $ResultCounter
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setResultCounter($ResultCounter)
     {
@@ -176,7 +176,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param ParcelShopType[] $ParcelShopList
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setParcelShopList($ParcelShopList)
     {
@@ -194,7 +194,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param string $SystemInformation
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setSystemInformation($SystemInformation)
     {
@@ -212,7 +212,7 @@ class getParcelShopFinderResponseType
 
     /**
      * @param ErrorDataType[] $ErrorDataList
-     * @return \DPD\API\getParcelShopFinderResponseType
+     * @return \ShippingTutorial\API\getParcelShopFinderResponseType
      */
     public function setErrorDataList($ErrorDataList)
     {

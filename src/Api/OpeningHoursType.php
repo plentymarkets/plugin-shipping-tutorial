@@ -38,7 +38,7 @@ class OpeningHoursType
 
     /**
      * @param string $WeekDay
-     * @return \DPD\API\OpeningHoursType
+     * @return \ShippingTutorial\API\OpeningHoursType
      */
     public function setWeekDay($WeekDay)
     {
@@ -56,7 +56,7 @@ class OpeningHoursType
 
     /**
      * @param OpenTimeType[] $OpenTimeList
-     * @return \DPD\API\OpeningHoursType
+     * @return \ShippingTutorial\API\OpeningHoursType
      */
     public function setOpenTimeList($OpenTimeList)
     {

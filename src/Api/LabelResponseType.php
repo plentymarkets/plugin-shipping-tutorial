@@ -38,7 +38,7 @@ class LabelResponseType
 
     /**
      * @param string $LabelPDF
-     * @return \DPD\API\LabelResponseType
+     * @return \ShippingTutorial\API\LabelResponseType
      */
     public function setLabelPDF($LabelPDF)
     {
@@ -56,7 +56,7 @@ class LabelResponseType
 
     /**
      * @param LabelDataType[] $LabelDataList
-     * @return \DPD\API\LabelResponseType
+     * @return \ShippingTutorial\API\LabelResponseType
      */
     public function setLabelDataList($LabelDataList)
     {

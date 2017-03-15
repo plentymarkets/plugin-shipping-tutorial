@@ -78,7 +78,7 @@ class ParcelDataType
 
     /**
      * @param ShipServiceType $ShipService
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setShipService($ShipService)
     {
@@ -96,7 +96,7 @@ class ParcelDataType
 
     /**
      * @param float $Weight
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setWeight($Weight)
     {
@@ -114,7 +114,7 @@ class ParcelDataType
 
     /**
      * @param string $Content
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setContent($Content)
     {
@@ -132,7 +132,7 @@ class ParcelDataType
 
     /**
      * @param string $YourInternalID
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setYourInternalID($YourInternalID)
     {
@@ -150,7 +150,7 @@ class ParcelDataType
 
     /**
      * @param string $Reference1
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setReference1($Reference1)
     {
@@ -168,7 +168,7 @@ class ParcelDataType
 
     /**
      * @param string $Reference2
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setReference2($Reference2)
     {
@@ -186,7 +186,7 @@ class ParcelDataType
 
     /**
      * @param CODType $COD
-     * @return \DPD\API\ParcelDataType
+     * @return \ShippingTutorial\API\ParcelDataType
      */
     public function setCOD($COD)
     {

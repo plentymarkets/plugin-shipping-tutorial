@@ -110,7 +110,7 @@ class AddressType
 
     /**
      * @param string $Company
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setCompany($Company)
     {
@@ -128,7 +128,7 @@ class AddressType
 
     /**
      * @param string $Salutation
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setSalutation($Salutation)
     {
@@ -146,7 +146,7 @@ class AddressType
 
     /**
      * @param string $Name
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setName($Name)
     {
@@ -164,7 +164,7 @@ class AddressType
 
     /**
      * @param string $Street
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setStreet($Street)
     {
@@ -182,7 +182,7 @@ class AddressType
 
     /**
      * @param string $HouseNo
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setHouseNo($HouseNo)
     {
@@ -200,7 +200,7 @@ class AddressType
 
     /**
      * @param string $Country
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setCountry($Country)
     {
@@ -218,7 +218,7 @@ class AddressType
 
     /**
      * @param string $ZipCode
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setZipCode($ZipCode)
     {
@@ -236,7 +236,7 @@ class AddressType
 
     /**
      * @param string $City
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setCity($City)
     {
@@ -254,7 +254,7 @@ class AddressType
 
     /**
      * @param string $State
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setState($State)
     {
@@ -272,7 +272,7 @@ class AddressType
 
     /**
      * @param string $Phone
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setPhone($Phone)
     {
@@ -290,7 +290,7 @@ class AddressType
 
     /**
      * @param string $Mail
-     * @return \DPD\API\AddressType
+     * @return \ShippingTutorial\API\AddressType
      */
     public function setMail($Mail)
     {

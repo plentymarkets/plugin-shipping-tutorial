@@ -78,7 +78,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setVersion($Version)
     {
@@ -96,7 +96,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setLanguage($Language)
     {
@@ -114,7 +114,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param boolean $Ack
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setAck($Ack)
     {
@@ -132,7 +132,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param dateTime $TimeStamp
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setTimeStamp($TimeStamp)
     {
@@ -150,7 +150,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param TrackingResult $ParcelLifeCycleData
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setParcelLifeCycleData($ParcelLifeCycleData)
     {
@@ -168,7 +168,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param string $SystemInformation
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setSystemInformation($SystemInformation)
     {
@@ -186,7 +186,7 @@ class getParcelLifeCycleResponseType
 
     /**
      * @param ErrorDataType[] $ErrorDataList
-     * @return \DPD\API\getParcelLifeCycleResponseType
+     * @return \ShippingTutorial\API\getParcelLifeCycleResponseType
      */
     public function setErrorDataList($ErrorDataList)
     {

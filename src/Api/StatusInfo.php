@@ -110,7 +110,7 @@ class StatusInfo
 
     /**
      * @param status $status
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setStatus($status)
     {
@@ -128,7 +128,7 @@ class StatusInfo
 
     /**
      * @param ContentLine $label
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setLabel($label)
     {
@@ -146,7 +146,7 @@ class StatusInfo
 
     /**
      * @param ContentItem $description
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setDescription($description)
     {
@@ -164,7 +164,7 @@ class StatusInfo
 
     /**
      * @param boolean $statusHasBeenReached
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setStatusHasBeenReached($statusHasBeenReached)
     {
@@ -182,7 +182,7 @@ class StatusInfo
 
     /**
      * @param boolean $isCurrentStatus
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setIsCurrentStatus($isCurrentStatus)
     {
@@ -200,7 +200,7 @@ class StatusInfo
 
     /**
      * @param boolean $showContactInfo
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setShowContactInfo($showContactInfo)
     {
@@ -218,7 +218,7 @@ class StatusInfo
 
     /**
      * @param ContentLine $location
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setLocation($location)
     {
@@ -236,7 +236,7 @@ class StatusInfo
 
     /**
      * @param ContentLine $date
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setDate($date)
     {
@@ -254,7 +254,7 @@ class StatusInfo
 
     /**
      * @param ContentItem[] $normalItems
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setNormalItems($normalItems)
     {
@@ -272,7 +272,7 @@ class StatusInfo
 
     /**
      * @param ContentItem[] $importantItems
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setImportantItems($importantItems)
     {
@@ -290,7 +290,7 @@ class StatusInfo
 
     /**
      * @param ContentItem[] $errorItems
-     * @return \DPD\API\StatusInfo
+     * @return \ShippingTutorial\API\StatusInfo
      */
     public function setErrorItems($errorItems)
     {

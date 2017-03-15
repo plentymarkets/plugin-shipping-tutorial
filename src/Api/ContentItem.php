@@ -46,7 +46,7 @@ class ContentItem
 
     /**
      * @param ContentLine $label
-     * @return \DPD\API\ContentItem
+     * @return \ShippingTutorial\API\ContentItem
      */
     public function setLabel($label)
     {
@@ -64,7 +64,7 @@ class ContentItem
 
     /**
      * @param ContentLine[] $content
-     * @return \DPD\API\ContentItem
+     * @return \ShippingTutorial\API\ContentItem
      */
     public function setContent($content)
     {
@@ -82,7 +82,7 @@ class ContentItem
 
     /**
      * @param string $linkTarget
-     * @return \DPD\API\ContentItem
+     * @return \ShippingTutorial\API\ContentItem
      */
     public function setLinkTarget($linkTarget)
     {

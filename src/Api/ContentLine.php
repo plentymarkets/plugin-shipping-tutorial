@@ -46,7 +46,7 @@ class ContentLine
 
     /**
      * @param string $content
-     * @return \DPD\API\ContentLine
+     * @return \ShippingTutorial\API\ContentLine
      */
     public function setContent($content)
     {
@@ -64,7 +64,7 @@ class ContentLine
 
     /**
      * @param boolean $bold
-     * @return \DPD\API\ContentLine
+     * @return \ShippingTutorial\API\ContentLine
      */
     public function setBold($bold)
     {
@@ -82,7 +82,7 @@ class ContentLine
 
     /**
      * @param boolean $paragraph
-     * @return \DPD\API\ContentLine
+     * @return \ShippingTutorial\API\ContentLine
      */
     public function setParagraph($paragraph)
     {

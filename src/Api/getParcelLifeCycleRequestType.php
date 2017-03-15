@@ -62,7 +62,7 @@ class getParcelLifeCycleRequestType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getParcelLifeCycleRequestType
+     * @return \ShippingTutorial\API\getParcelLifeCycleRequestType
      */
     public function setVersion($Version)
     {
@@ -80,7 +80,7 @@ class getParcelLifeCycleRequestType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getParcelLifeCycleRequestType
+     * @return \ShippingTutorial\API\getParcelLifeCycleRequestType
      */
     public function setLanguage($Language)
     {
@@ -98,7 +98,7 @@ class getParcelLifeCycleRequestType
 
     /**
      * @param PartnerCredentialType $PartnerCredentials
-     * @return \DPD\API\getParcelLifeCycleRequestType
+     * @return \ShippingTutorial\API\getParcelLifeCycleRequestType
      */
     public function setPartnerCredentials($PartnerCredentials)
     {
@@ -116,7 +116,7 @@ class getParcelLifeCycleRequestType
 
     /**
      * @param UserCredentialType $UserCredentials
-     * @return \DPD\API\getParcelLifeCycleRequestType
+     * @return \ShippingTutorial\API\getParcelLifeCycleRequestType
      */
     public function setUserCredentials($UserCredentials)
     {
@@ -134,7 +134,7 @@ class getParcelLifeCycleRequestType
 
     /**
      * @param string $ParcelNo
-     * @return \DPD\API\getParcelLifeCycleRequestType
+     * @return \ShippingTutorial\API\getParcelLifeCycleRequestType
      */
     public function setParcelNo($ParcelNo)
     {

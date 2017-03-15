@@ -102,7 +102,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param int $Version
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setVersion($Version)
     {
@@ -120,7 +120,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param string $Language
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setLanguage($Language)
     {
@@ -138,7 +138,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param PartnerCredentialType $PartnerCredentials
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setPartnerCredentials($PartnerCredentials)
     {
@@ -156,7 +156,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param UserCredentialType $UserCredentials
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setUserCredentials($UserCredentials)
     {
@@ -174,7 +174,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param int $MaxReturnValues
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setMaxReturnValues($MaxReturnValues)
     {
@@ -192,7 +192,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param SearchModeType $SearchMode
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setSearchMode($SearchMode)
     {
@@ -210,7 +210,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param SearchAddressType $SearchAddress
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setSearchAddress($SearchAddress)
     {
@@ -228,7 +228,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param SearchGeoDataType $SearchGeoData
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setSearchGeoData($SearchGeoData)
     {
@@ -246,7 +246,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param string $HideOnClosedAt
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setHideOnClosedAt($HideOnClosedAt)
     {
@@ -264,7 +264,7 @@ class getParcelShopFinderRequestType
 
     /**
      * @param dpdServiceType $NeedService
-     * @return \DPD\API\getParcelShopFinderRequestType
+     * @return \ShippingTutorial\API\getParcelShopFinderRequestType
      */
     public function setNeedService($NeedService)
     {

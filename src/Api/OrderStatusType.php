@@ -62,7 +62,7 @@ class OrderStatusType
 
     /**
      * @param string $ParcelNo
-     * @return \DPD\API\OrderStatusType
+     * @return \ShippingTutorial\API\OrderStatusType
      */
     public function setParcelNo($ParcelNo)
     {
@@ -80,7 +80,7 @@ class OrderStatusType
 
     /**
      * @param OrderInformationType $OrderInformation
-     * @return \DPD\API\OrderStatusType
+     * @return \ShippingTutorial\API\OrderStatusType
      */
     public function setOrderInformation($OrderInformation)
     {
@@ -98,7 +98,7 @@ class OrderStatusType
 
     /**
      * @param AddressType $ShipAddress
-     * @return \DPD\API\OrderStatusType
+     * @return \ShippingTutorial\API\OrderStatusType
      */
     public function setShipAddress($ShipAddress)
     {
@@ -116,7 +116,7 @@ class OrderStatusType
 
     /**
      * @param StatusInfoType $LastStatusInfo
-     * @return \DPD\API\OrderStatusType
+     * @return \ShippingTutorial\API\OrderStatusType
      */
     public function setLastStatusInfo($LastStatusInfo)
     {
@@ -134,7 +134,7 @@ class OrderStatusType
 
     /**
      * @param StatusInfoContainerType $StatusInfoContainer
-     * @return \DPD\API\OrderStatusType
+     * @return \ShippingTutorial\API\OrderStatusType
      */
     public function setStatusInfoContainer($StatusInfoContainer)
     {

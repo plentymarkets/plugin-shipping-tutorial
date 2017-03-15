@@ -38,7 +38,7 @@ class SearchGeoDataType
 
     /**
      * @param float $Longitude
-     * @return \DPD\API\SearchGeoDataType
+     * @return \ShippingTutorial\API\SearchGeoDataType
      */
     public function setLongitude($Longitude)
     {
@@ -56,7 +56,7 @@ class SearchGeoDataType
 
     /**
      * @param float $Latitude
-     * @return \DPD\API\SearchGeoDataType
+     * @return \ShippingTutorial\API\SearchGeoDataType
      */
     public function setLatitude($Latitude)
     {

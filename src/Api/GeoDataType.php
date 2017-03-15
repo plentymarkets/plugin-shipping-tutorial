@@ -70,7 +70,7 @@ class GeoDataType
 
     /**
      * @param float $Distance
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setDistance($Distance)
     {
@@ -88,7 +88,7 @@ class GeoDataType
 
     /**
      * @param float $Longitude
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setLongitude($Longitude)
     {
@@ -106,7 +106,7 @@ class GeoDataType
 
     /**
      * @param float $Latitude
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setLatitude($Latitude)
     {
@@ -124,7 +124,7 @@ class GeoDataType
 
     /**
      * @param float $CoordinateX
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setCoordinateX($CoordinateX)
     {
@@ -142,7 +142,7 @@ class GeoDataType
 
     /**
      * @param float $CoordinateY
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setCoordinateY($CoordinateY)
     {
@@ -160,7 +160,7 @@ class GeoDataType
 
     /**
      * @param float $CoordinateZ
-     * @return \DPD\API\GeoDataType
+     * @return \ShippingTutorial\API\GeoDataType
      */
     public function setCoordinateZ($CoordinateZ)
     {

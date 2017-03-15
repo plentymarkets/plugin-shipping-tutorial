@@ -86,7 +86,7 @@ class StatusInfoType
 
     /**
      * @param boolean $StatusReached
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setStatusReached($StatusReached)
     {
@@ -104,7 +104,7 @@ class StatusInfoType
 
     /**
      * @param string $StatusID
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setStatusID($StatusID)
     {
@@ -122,7 +122,7 @@ class StatusInfoType
 
     /**
      * @param string $Headline
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setHeadline($Headline)
     {
@@ -140,7 +140,7 @@ class StatusInfoType
 
     /**
      * @param string $Description
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setDescription($Description)
     {
@@ -158,7 +158,7 @@ class StatusInfoType
 
     /**
      * @param string $StatusText_Mobile
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setStatusText_Mobile($StatusText_Mobile)
     {
@@ -176,7 +176,7 @@ class StatusInfoType
 
     /**
      * @param string $StatusText_Desktop
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setStatusText_Desktop($StatusText_Desktop)
     {
@@ -194,7 +194,7 @@ class StatusInfoType
 
     /**
      * @param string $StatusDate
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setStatusDate($StatusDate)
     {
@@ -212,7 +212,7 @@ class StatusInfoType
 
     /**
      * @param DepotDataType $DepotData
-     * @return \DPD\API\StatusInfoType
+     * @return \ShippingTutorial\API\StatusInfoType
      */
     public function setDepotData($DepotData)
     {

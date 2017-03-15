@@ -30,7 +30,7 @@ class getOrderStatusResponse
 
     /**
      * @param getOrderStatusResponseType $getOrderStatusResult
-     * @return \DPD\API\getOrderStatusResponse
+     * @return \ShippingTutorial\API\getOrderStatusResponse
      */
     public function setGetOrderStatusResult($getOrderStatusResult)
     {

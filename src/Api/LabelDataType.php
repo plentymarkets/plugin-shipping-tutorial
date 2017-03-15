@@ -38,7 +38,7 @@ class LabelDataType
 
     /**
      * @param string $YourInternalID
-     * @return \DPD\API\LabelDataType
+     * @return \ShippingTutorial\API\LabelDataType
      */
     public function setYourInternalID($YourInternalID)
     {
@@ -56,7 +56,7 @@ class LabelDataType
 
     /**
      * @param string $ParcelNo
-     * @return \DPD\API\LabelDataType
+     * @return \ShippingTutorial\API\LabelDataType
      */
     public function setParcelNo($ParcelNo)
     {

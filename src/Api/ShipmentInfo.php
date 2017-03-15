@@ -76,7 +76,7 @@ class ShipmentInfo extends StatusInfo
 
     /**
      * @param ContentItem $receiver
-     * @return \DPD\API\ShipmentInfo
+     * @return \ShippingTutorial\API\ShipmentInfo
      */
     public function setReceiver($receiver)
     {
@@ -94,7 +94,7 @@ class ShipmentInfo extends StatusInfo
 
     /**
      * @param ContentItem $predictInformation
-     * @return \DPD\API\ShipmentInfo
+     * @return \ShippingTutorial\API\ShipmentInfo
      */
     public function setPredictInformation($predictInformation)
     {
@@ -112,7 +112,7 @@ class ShipmentInfo extends StatusInfo
 
     /**
      * @param ContentItem $serviceDescription
-     * @return \DPD\API\ShipmentInfo
+     * @return \ShippingTutorial\API\ShipmentInfo
      */
     public function setServiceDescription($serviceDescription)
     {
@@ -130,7 +130,7 @@ class ShipmentInfo extends StatusInfo
 
     /**
      * @param ContentItem $additionalServiceElements
-     * @return \DPD\API\ShipmentInfo
+     * @return \ShippingTutorial\API\ShipmentInfo
      */
     public function setAdditionalServiceElements($additionalServiceElements)
     {
@@ -148,7 +148,7 @@ class ShipmentInfo extends StatusInfo
 
     /**
      * @param TrackingProperty[] $trackingProperty
-     * @return \DPD\API\ShipmentInfo
+     * @return \ShippingTutorial\API\ShipmentInfo
      */
     public function setTrackingProperty($trackingProperty)
     {

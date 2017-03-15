@@ -30,7 +30,7 @@ class setOrderResponse
 
     /**
      * @param setOrderResponseType $setOrderResult
-     * @return \DPD\API\setOrderResponse
+     * @return \ShippingTutorial\API\setOrderResponse
      */
     public function setSetOrderResult($setOrderResult)
     {

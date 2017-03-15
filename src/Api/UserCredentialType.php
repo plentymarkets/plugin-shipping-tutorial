@@ -38,7 +38,7 @@ class UserCredentialType
 
     /**
      * @param int $cloudUserID
-     * @return \DPD\API\UserCredentialType
+     * @return \ShippingTutorial\API\UserCredentialType
      */
     public function setCloudUserID($cloudUserID)
     {
@@ -56,7 +56,7 @@ class UserCredentialType
 
     /**
      * @param string $Token
-     * @return \DPD\API\UserCredentialType
+     * @return \ShippingTutorial\API\UserCredentialType
      */
     public function setToken($Token)
     {

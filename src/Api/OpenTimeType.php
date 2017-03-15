@@ -38,7 +38,7 @@ class OpenTimeType
 
     /**
      * @param string $TimeFrom
-     * @return \DPD\API\OpenTimeType
+     * @return \ShippingTutorial\API\OpenTimeType
      */
     public function setTimeFrom($TimeFrom)
     {
@@ -56,7 +56,7 @@ class OpenTimeType
 
     /**
      * @param string $TimeEnd
-     * @return \DPD\API\OpenTimeType
+     * @return \ShippingTutorial\API\OpenTimeType
      */
     public function setTimeEnd($TimeEnd)
     {
