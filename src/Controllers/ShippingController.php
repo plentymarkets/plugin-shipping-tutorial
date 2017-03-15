@@ -2,20 +2,36 @@
 
 namespace ShippingTutorial\Controllers;
 
+use DPD\API\setOrder;
 use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Address\Models\Address;
 use Plenty\Modules\Cloud\Storage\Models\StorageObject;
 use Plenty\Modules\Order\Contracts\OrderRepositoryContract;
+use Plenty\Modules\Order\Models\Order;
 use Plenty\Modules\Order\Shipping\Contracts\ParcelServicePresetRepositoryContract;
 use Plenty\Modules\Order\Shipping\Information\Contracts\ShippingInformationRepositoryContract;
 use Plenty\Modules\Order\Shipping\Package\Contracts\OrderShippingPackageRepositoryContract;
 use Plenty\Modules\Order\Shipping\PackageType\Contracts\ShippingPackageTypeRepositoryContract;
 use Plenty\Modules\Order\Shipping\ParcelService\Models\ParcelServicePreset;
+use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
 use Plenty\Modules\Plugin\Storage\Contracts\StorageRepositoryContract;
 use Plenty\Plugin\Controller;
 use Plenty\Plugin\Http\Request;
 use Plenty\Plugin\ConfigRepository;
+use ShippingTutorial\API\AddressType;
+use ShippingTutorial\API\CODType;
+use ShippingTutorial\API\DPDCloudService_v1;
+use ShippingTutorial\API\OrderActionType;
+use ShippingTutorial\API\OrderDataType;
 use ShippingTutorial\API\OrderSettingsType;
+use ShippingTutorial\API\ParcelDataType;
+use ShippingTutorial\API\PartnerCredentialType;
+use ShippingTutorial\API\PaymentType;
+use ShippingTutorial\API\setOrderRequestType;
+use ShippingTutorial\API\setOrderResponse;
+use ShippingTutorial\API\setOrderResponseType;
+use ShippingTutorial\API\ShipServiceType;
+use ShippingTutorial\API\UserCredentialType;
 
 /**
  * Class ShippingController
@@ -27,6 +43,17 @@ class ShippingController extends Controller
 	 * @var Request
 	 */
 	private $request;
+
+    /**
+     * @var string $wsdl
+     */
+    private $wsdl = 'https://cloud-stage.dpd.com/services/v1/DPDCloudService.asmx?wsdl';
+
+    /**
+     * @var DPDCloudService_v1 $dpdapi
+     */
+    private $dpdapi;
+
 
 	/**
 	 * @var OrderRepositoryContract $orderRepository
@@ -59,6 +86,21 @@ class ShippingController extends Controller
 	private $shippingPackageTypeRepositoryContract;
 
     /**
+     * @var PaymentMethodRepositoryContract
+     */
+    private $paymentMethodRepository;
+
+    /**
+     * @var PartnerCredentialType $partnerCredentials
+     */
+    private $partnerCredentials;
+
+    /**
+     * @var UserCredentialType $userCredentials
+     */
+    private $userCredentials;
+
+    /**
      * @var  array
      */
     private $createOrderResult = [];
@@ -67,6 +109,32 @@ class ShippingController extends Controller
      * @var ConfigRepository
      */
     private $config;
+
+    /**
+     * label constants
+     */
+    CONST UPPER_LEFT_START_POSITION = 'UpperLeft';
+    CONST UPPER_RIGHT_START_POSITION = 'UpperRight';
+    CONST LOWER_LEFT_START_POSITION = 'LowerLeft';
+    CONST LOWER_RIGHT_START_POSITION = 'LowerRight';
+
+    CONST LABEL_SIZE_PDF_A6 = 'PDF_A6';
+    CONST LABEL_SIZE_PDF_A4 = 'PDF_A4';
+
+    /**
+     * Plugin key
+     */
+    CONST PLUGIN_KEY = 'ShippingTutorial';
+
+    /**
+     * COD
+     */
+    CONST PLENTY_MOP_COD = 1;
+
+    /**
+     * API version
+     */
+    CONST VERSION = 100;
 
 	/**
 	 * ShipmentController constructor.
@@ -87,18 +155,26 @@ class ShippingController extends Controller
 								StorageRepositoryContract $storageRepository,
 								ShippingInformationRepositoryContract $shippingInformationRepositoryContract,
 								ShippingPackageTypeRepositoryContract $shippingPackageTypeRepositoryContract,
+                                PaymentMethodRepositoryContract $paymentMethodRepository,
                                 ConfigRepository $config)
 	{
 		$this->request = $request;
+
+		$this->dpdapi = pluginApp(DPDCloudService_v1::class,[array(),$this->wsdl]);
+
+		// Contracts
 		$this->orderRepository = $orderRepository;
 		$this->addressRepository = $addressRepositoryContract;
 		$this->orderShippingPackage = $orderShippingPackage;
 		$this->storageRepository = $storageRepository;
-
 		$this->shippingInformationRepositoryContract = $shippingInformationRepositoryContract;
 		$this->shippingPackageTypeRepositoryContract = $shippingPackageTypeRepositoryContract;
+        $this->paymentMethodRepository = $paymentMethodRepository;
 
 		$this->config = $config;
+
+        $this->partnerCredentials = pluginApp(PartnerCredentialType::class,['DPD Sandbox', 'XXX']); //TODO set partner credentials
+        $this->userCredentials = pluginApp(UserCredentialType::class,['1234', 'XXXX']); // TODO: fetch credentials from settings
 	}
 
 
@@ -118,8 +194,8 @@ class ShippingController extends Controller
         $orderSettingsType = pluginApp(OrderSettingsType::class,
             array(
                 $shipmentDate,
-                $labelSize,
-                $labelStartPosition
+                self::LABEL_SIZE_PDF_A6,
+                self::UPPER_LEFT_START_POSITION
             )
         );
 
@@ -127,86 +203,200 @@ class ShippingController extends Controller
 		{
 			$order = $this->orderRepository->findOrderById($orderId);
 
-            // gathering required data for registering the shipment
-
-            /** @var Address $address */
-            $address = $order->deliveryAddress;
-
-            $receiverFirstName     = $address->firstName;
-            $receiverLastName      = $address->lastName;
-            $receiverStreet        = $address->street;
-            $receiverNo            = $address->houseNumber;
-            $receiverPostalCode    = $address->postalCode;
-            $receiverTown          = $address->town;
-            $receiverCountry       = $address->country->name; // or: $address->country->isoCode2
-
-            // reads sender data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
-            $senderName           = $this->config->get('ShippingTutorial.senderName', 'plentymarkets GmbH - Timo Zenke');
-            $senderStreet         = $this->config->get('ShippingTutorial.senderStreet', 'Bürgermeister-Brunner-Str.');
-            $senderNo             = $this->config->get('ShippingTutorial.senderNo', '15');
-            $senderPostalCode     = $this->config->get('ShippingTutorial.senderPostalCode', '34117');
-            $senderTown           = $this->config->get('ShippingTutorial.senderTown', 'Kassel');
-            $senderCountryID      = $this->config->get('ShippingTutorial.senderCountry', '0');
-            $senderCountry        = ($senderCountryID == 0 ? 'Germany' : 'Austria');
-
-            // gets order shipping packages from current order
-            $packages = $this->orderShippingPackage->listOrderShippingPackages($order->id);
-
-            // iterating through packages
-            foreach($packages as $package)
+            // check shipping profile
+            if($this->getParcelServicePreset($order->shippingProfileId) != null)
             {
-                // weight
-                $weight = $package->weight;
+                // gathering required data for registering the shipment
 
-                // determine packageType
-                $packageType = $this->shippingPackageTypeRepositoryContract->findShippingPackageTypeById($package->packageId);
+                $shipAddress = $this->getShipAddressFromOrder($order);
 
-                // package dimensions
-                list($length, $width, $height) = $this->getPackageDimensions($packageType);
+                // reads sender data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
+                $senderName           = $this->config->get('ShippingTutorial.senderName', 'plentymarkets GmbH - Timo Zenke');
+                $senderStreet         = $this->config->get('ShippingTutorial.senderStreet', 'Bürgermeister-Brunner-Str.');
+                $senderNo             = $this->config->get('ShippingTutorial.senderNo', '15');
+                $senderPostalCode     = $this->config->get('ShippingTutorial.senderPostalCode', '34117');
+                $senderTown           = $this->config->get('ShippingTutorial.senderTown', 'Kassel');
+                $senderCountryID      = $this->config->get('ShippingTutorial.senderCountry', '0');
+                $senderCountry        = ($senderCountryID == 0 ? 'Germany' : 'Austria');
 
+                //TODO get service from profile/settings
+                $shipService = ShipServiceType::Classic;
+
+                // gets order shipping packages from current order
+                $packages = $this->orderShippingPackage->listOrderShippingPackages($order->id);
+
+                $orderDataList = [];
+
+                // Iterating through packages
+                foreach($packages as $package)
+                {
+                    // Weight
+                    $weight = 0.2; // Fallback minimum weight
+
+                    if ($package->weight) {
+                        $weight = $package->weight / 1000;
+                    }
+
+                    // EXAMPLE ONLY - Determine packageType, but not needed for DPD API
+                    $packageType = $this->shippingPackageTypeRepositoryContract->findShippingPackageTypeById($package->packageId);
+
+                    // EXAMPLE ONLY - Package dimensions, but not needed for DPD API
+                    list($length, $width, $height) = $this->getPackageDimensions($packageType);
+
+                    $content = 'Paketinhalt';
+                    $internalId = $orderId . '_' . $package->id; // Kind of reference number
+                    $reference1 = strlen($order->deliveryAddress->email) ? $order->deliveryAddress->email : $order->deliveryAddress->phone;
+                    $reference1 = substr($reference1, 0, 35);
+                    $reference2 = substr('Auftragsnummer: ' . $orderId, 0, 35);
+
+
+                    // EXAMPLE ONLY - get payment methods
+                    $paymentMethods = $this->paymentMethodRepository->allForPlugin(self::PLUGIN_KEY);
+
+                    // --- cod ---
+                    if ($order->methodOfPaymentId == self::PLENTY_MOP_COD) {
+                        $payment = pluginApp(PaymentType::class,
+                            array(
+                                PaymentType::Cash
+                            ));
+                        $cod = pluginApp(CODType::class,
+                            array(
+                                'Nachnahme',
+                                100.00/*$order->invoiceTotal*/,
+                                $payment
+                            ));
+                        $cod->Purpose = 'Nachnahme';
+                        $cod->Amount = 100.00/*$order->invoiceTotal*/
+                        ;
+                    }
+
+                    $parcelData = pluginApp(ParcelDataType::class,
+                        array(
+                            $shipService,
+                            $weight,
+                            $content,
+                            $internalId,
+                            $reference1,
+                            $reference2,
+                            ($cod ? $cod : null)
+                        )
+                    );
+
+                    /*
+                     * Add order data to order list (1:n parcels:shipping registration here)
+                     */
+                    $orderDataList[] = pluginApp(OrderDataType::class,
+                        array(
+                            $shipAddress,
+                            0,
+                            $parcelData
+                        )
+                    );
+                }
+
+                // register
+                $setOrderRequest = pluginApp(setOrderRequestType::class,
+                    array(
+                        self::VERSION,
+                        'de_DE',
+                        $this->partnerCredentials,
+                        $this->userCredentials,
+                        OrderActionType::startOrder,
+                        $orderSettingsType,
+                        $orderDataList
+                    )
+                );
 
                 try
                 {
-                    // check wether we are in test or productive mode, use different login or connection data
-                    $mode = $this->config->get('ShippingTutorial.mode', '0');
+                    // EXAMPLE ONLY - check whether we are in test or productive mode, use different login or connection data
+                    $isTestmode = $this->config->get('ShippingTutorial.mode', '0');
 
-                    // shipping service providers API should be used here
-                    $response = [
-                        'labelUrl' => 'https://developers.plentymarkets.com/layout/plugins/production/plentypluginshowcase/images/landingpage/why-plugin-2.svg',
-                        'shipmentNumber' => '1111112222223333',
-                        'sequenceNumber' => 1,
-                        'status' => 'shipment sucessfully registered'
-                    ];
+                    $setOrder = pluginApp(setOrder::class,
+                        array(
+                            $setOrderRequest
+                        )
+                    );
 
-                    // handles the response
-                    $shipmentItems = $this->handleAfterRegisterShipment($response['labelUrl'], $response['shipmentNumber'], $package->id);
+                    $response = $this->dpdapi->setOrder($setOrder);
 
-                    // adds result
-                    $this->createOrderResult[$orderId] = $this->buildResultArray(
-                        true,
-                        $this->getStatusMessage($response),
-                        false,
-                        $shipmentItems);
+                    $shipmentItems = array();
+                    if (    isset($response->setOrderResult) &&
+                            (!isset($response->setOrderResult->ErrorDataList) && count($response->setOrderResult->ErrorDataList) == 0))
+                    {
 
-                    // saves shipping information
-                    $this->saveShippingInformation($orderId, $shipmentDate, $shipmentItems);
+                        if (!is_array($response->setOrderResult))
+                        {
+                            $shipmentItems = $this->handleAfterRegisterShipment($response->setOrderResult);
+                        }
+                        else
+                        {
+                            /** @var setOrderResponseType $setOrderResult */
+                            foreach ($response->setOrderResult as $setOrderResult)
+                            {
+                                $shipmentItems = $this->handleAfterRegisterShipment($setOrderResult);
+                            }
+                        }
+                        $this->createOrderResult[$orderId] = $this->buildResultArray(
+                            true,
+                            $this->getStatusMessage($response),
+                            false,
+                            $shipmentItems);
 
-
+                        $this->saveShippingInformation($orderId, $shipmentDate, $shipmentItems);
+                    }
+                    else
+                    {
+                        $this->createOrderResult[$orderId] = $this->buildResultArray(
+                            false,
+                            $this->getStatusMessage($response),
+                            false,
+                            $shipmentItems);
+                    }
                 }
                 catch(\SoapFault $soapFault)
                 {
+                    $this->handleSoapFault($soapFault);
                     // handle exception
                 }
 
             }
-
-		}
+        }
 
 		// return all results to service
 		return $this->createOrderResult;
 	}
 
+    /**
+     * @param Order $order
+     * @return AddressType $shipAddress
+     */
+    private function getShipAddressFromOrder($order)
+    {
 
+        /** @var Address $address */
+        $address = $order->deliveryAddress;
+
+        $addressData = [
+            ($address->firstName == '' && $address->lastName == '' ? '' : $address->companyName),
+            '', /* gender */
+            ($address->firstName == '' && $address->lastName == '' ? $address->companyName : $address->firstName.' '.$address->lastName),
+            $address->street,
+            $address->houseNumber,
+            $address->country->isoCode3,
+            $address->postalCode,
+            $address->town,
+            $address->state,
+            $address->phone,
+            $address->email
+        ];
+
+        $shipAddress = pluginApp(AddressType::class,
+            $addressData
+        );
+
+        return $shipAddress;
+    }
 
     /**
      * Cancels registered shipment(s)
@@ -474,30 +664,50 @@ class ShippingController extends Controller
 	}
 
 
-	/**
-     * Handling of response values, fires S3 storage and updates order shipping package
-     *
-	 * @param string $labelUrl
-     * @param string $shipmentNumber
-     * @param string $sequenceNumber
-	 * @return array
-	 */
-	private function handleAfterRegisterShipment($labelUrl, $shipmentNumber, $sequenceNumber)
-	{
-		$shipmentItems = array();
-		$storageObject = $this->saveLabelToS3(
-			$labelUrl,
-			$shipmentNumber . '.pdf');
+    /**
+     * @param setOrderResponse $setOrderResponse
+     * @return array
+     */
+    private function handleAfterRegisterShipment($setOrderResponse)
+    {
+        $shipmentItems = array();
 
-		$shipmentItems[] = $this->buildShipmentItems(
-			$labelUrl,
-			$shipmentNumber);
+        foreach($setOrderResponse->LabelResponse->LabelDataList->LabelData as $labelData) {
+            $internalID = $labelData->YourInternalID;
+            $shipmentNumber = $labelData->ParcelNo;
+        }
 
-		$this->orderShippingPackage->updateOrderShippingPackage(
-			$sequenceNumber,
-			$this->buildPackageInfo(
-				$shipmentNumber,
-				$storageObject->key));
-		return $shipmentItems;
-	}
+        if(strlen($setOrderResponse->LabelResponse->LabelPDF) > 0 && strlen($shipmentNumber) > 0) {
+            $storageObject = $this->saveLabelToS3(
+            /*base64_decode($setOrderResponse->LabelResponse->LabelPDF),*/
+                $setOrderResponse->LabelResponse->LabelPDF,
+                $shipmentNumber . '.pdf');
+
+            $shipmentItems[] = $this->buildShipmentItems(
+                'path_to_pdf_in_S3',
+                $shipmentNumber);
+
+            $this->orderShippingPackage->updateOrderShippingPackage(
+                1,
+                $this->buildPackageInfo(
+                    $shipmentNumber,
+                    $storageObject->key)
+            );
+        }
+
+        return $shipmentItems;
+    }
+
+    /**
+     * @param $soapFault
+     */
+    private function handleSoapFault($soapFault)
+    {
+        echo $soapFault;
+        echo $this->dpdapi->getLastRequest();
+        echo $this->dpdapi->getLastRequestHeaders();
+        echo $this->dpdapi->getLastResponse();
+        echo $this->dpdapi->getLastResponseHeaders();
+        exit;
+    }
 }
