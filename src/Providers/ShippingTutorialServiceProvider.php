@@ -2,6 +2,8 @@
 namespace ShippingTutorial\Providers;
 
 use Plenty\Modules\Order\Shipping\ServiceProvider\Services\ShippingServiceProviderService;
+use Plenty\Modules\EventProcedures\Services\Entries\ProcedureEntry;
+use Plenty\Modules\EventProcedures\Services\EventProceduresService;
 use Plenty\Plugin\ServiceProvider;
 
 /**
@@ -21,8 +23,8 @@ class ShippingTutorialServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param EventProceduresService $eventProceduresService
      * @param ShippingServiceProviderService $shippingServiceProviderService
+     * @param EventProceduresService $eventProceduresService
      */
     public function boot(ShippingServiceProviderService $shippingServiceProviderService, EventProceduresService $eventProceduresService)
     {
