@@ -8,7 +8,7 @@ use Plenty\Plugin\Log\Loggable;
 
 class CreateShippingServiceProvider
 {
-    use loggable;
+    use Loggable;
 	/*
 	 * @var ShippingServiceProviderRepositoryContract $shippingServiceProviderRepository
 	 */

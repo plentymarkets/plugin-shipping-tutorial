@@ -41,8 +41,7 @@ use Plenty\Plugin\Log\Loggable;
  */
 class ShippingController extends Controller
 {
-
-    use loggable;
+    use Loggable;
 
 
     /**
