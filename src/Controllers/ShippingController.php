@@ -45,9 +45,9 @@ class ShippingController extends Controller
 
 
     /**
-	 * @var Request
-	 */
-	private $request;
+     * @var Request
+     */
+    private $request;
 
     /**
      * @var string $wsdl
@@ -60,35 +60,35 @@ class ShippingController extends Controller
     private $dpdapi;
 
 
-	/**
-	 * @var OrderRepositoryContract $orderRepository
-	 */
-	private $orderRepository;
+    /**
+     * @var OrderRepositoryContract $orderRepository
+     */
+    private $orderRepository;
 
-	/**
-	 * @var AddressRepositoryContract $addressRepository
-	 */
-	private $addressRepository;
+    /**
+     * @var AddressRepositoryContract $addressRepository
+     */
+    private $addressRepository;
 
-	/**
-	 * @var OrderShippingPackageRepositoryContract $orderShippingPackage
-	 */
-	private $orderShippingPackage;
+    /**
+     * @var OrderShippingPackageRepositoryContract $orderShippingPackage
+     */
+    private $orderShippingPackage;
 
-	/**
-	 * @var ShippingInformationRepositoryContract
-	 */
-	private $shippingInformationRepositoryContract;
+    /**
+     * @var ShippingInformationRepositoryContract
+     */
+    private $shippingInformationRepositoryContract;
 
-	/**
-	 * @var StorageRepositoryContract $storageRepository
-	 */
-	private $storageRepository;
+    /**
+     * @var StorageRepositoryContract $storageRepository
+     */
+    private $storageRepository;
 
-	/**
-	 * @var ShippingPackageTypeRepositoryContract
-	 */
-	private $shippingPackageTypeRepositoryContract;
+    /**
+     * @var ShippingPackageTypeRepositoryContract
+     */
+    private $shippingPackageTypeRepositoryContract;
 
     /**
      * @var PaymentMethodRepositoryContract
@@ -141,44 +141,44 @@ class ShippingController extends Controller
      */
     CONST VERSION = 100;
 
-	/**
-	 * ShipmentController constructor.
+    /**
+     * ShipmentController constructor.
      *
-	 * @param Request $request
-	 * @param OrderRepositoryContract $orderRepository
-	 * @param AddressRepositoryContract $addressRepositoryContract
-	 * @param OrderShippingPackageRepositoryContract $orderShippingPackage
-	 * @param StorageRepositoryContract $storageRepository
-	 * @param ShippingInformationRepositoryContract $shippingInformationRepositoryContract
-	 * @param ShippingPackageTypeRepositoryContract $shippingPackageTypeRepositoryContract
+     * @param Request $request
+     * @param OrderRepositoryContract $orderRepository
+     * @param AddressRepositoryContract $addressRepositoryContract
+     * @param OrderShippingPackageRepositoryContract $orderShippingPackage
+     * @param StorageRepositoryContract $storageRepository
+     * @param ShippingInformationRepositoryContract $shippingInformationRepositoryContract
+     * @param ShippingPackageTypeRepositoryContract $shippingPackageTypeRepositoryContract
      * @param ConfigRepository $config
      */
-	public function __construct(Request $request,
-								OrderRepositoryContract $orderRepository,
-								AddressRepositoryContract $addressRepositoryContract,
-								OrderShippingPackageRepositoryContract $orderShippingPackage,
-								StorageRepositoryContract $storageRepository,
-								ShippingInformationRepositoryContract $shippingInformationRepositoryContract,
-								ShippingPackageTypeRepositoryContract $shippingPackageTypeRepositoryContract,
+    public function __construct(Request $request,
+                                OrderRepositoryContract $orderRepository,
+                                AddressRepositoryContract $addressRepositoryContract,
+                                OrderShippingPackageRepositoryContract $orderShippingPackage,
+                                StorageRepositoryContract $storageRepository,
+                                ShippingInformationRepositoryContract $shippingInformationRepositoryContract,
+                                ShippingPackageTypeRepositoryContract $shippingPackageTypeRepositoryContract,
                                 PaymentMethodRepositoryContract $paymentMethodRepository,
                                 ConfigRepository $config)
-	{
-		$this->request = $request;
+    {
+        $this->request = $request;
 
-		$this->dpdapi = pluginApp(DPDCloudService_v1::class,[array(),$this->wsdl]);
+        $this->dpdapi = pluginApp(DPDCloudService_v1::class,[array(),$this->wsdl]);
 
-		// Contracts
-		$this->orderRepository = $orderRepository;
-		$this->addressRepository = $addressRepositoryContract;
-		$this->orderShippingPackage = $orderShippingPackage;
-		$this->storageRepository = $storageRepository;
-		$this->shippingInformationRepositoryContract = $shippingInformationRepositoryContract;
-		$this->shippingPackageTypeRepositoryContract = $shippingPackageTypeRepositoryContract;
+        // Contracts
+        $this->orderRepository = $orderRepository;
+        $this->addressRepository = $addressRepositoryContract;
+        $this->orderShippingPackage = $orderShippingPackage;
+        $this->storageRepository = $storageRepository;
+        $this->shippingInformationRepositoryContract = $shippingInformationRepositoryContract;
+        $this->shippingPackageTypeRepositoryContract = $shippingPackageTypeRepositoryContract;
         $this->paymentMethodRepository = $paymentMethodRepository;
 
-		$this->config = $config;
+        $this->config = $config;
 
-		// Get credential by UI config
+        // Get credential by UI config
         $partnerCredentialsName     = $this->config->get('ShippingTutorial.partnerName');
         $partnerCredentialsToken    = $this->config->get('ShippingTutorial.partnerToken');
         $userCredentialsName        = $this->config->get('ShippingTutorial.userName');
@@ -186,21 +186,21 @@ class ShippingController extends Controller
 
         $this->partnerCredentials = pluginApp(PartnerCredentialType::class,[$partnerCredentialsName, $partnerCredentialsToken]);
         $this->userCredentials = pluginApp(UserCredentialType::class,[$userCredentialsName, $userCredentialsToken]);
-	}
+    }
 
 
-	/**
-	 * Registers shipment(s)
-	 *
-	 * @param Request $request
-	 * @param array $orderIds
-	 * @return string
-	 */
-	public function registerShipments(Request $request, $orderIds)
-	{
-		$orderIds = $this->getOrderIds($request, $orderIds);
-		$orderIds = $this->getOpenOrderIds($orderIds);
-		$shipmentDate = date('Y-m-d');
+    /**
+     * Registers shipment(s)
+     *
+     * @param Request $request
+     * @param array $orderIds
+     * @return string
+     */
+    public function registerShipments(Request $request, $orderIds)
+    {
+        $orderIds = $this->getOrderIds($request, $orderIds);
+        $orderIds = $this->getOpenOrderIds($orderIds);
+        $shipmentDate = date('Y-m-d');
 
         $orderSettingsType = pluginApp(OrderSettingsType::class,
             array(
@@ -210,12 +210,12 @@ class ShippingController extends Controller
             )
         );
 
-		foreach($orderIds as $orderId)
-		{
+        foreach($orderIds as $orderId)
+        {
             /**
              * --- ORDER ---
              */
-			$order = $this->orderRepository->findOrderById($orderId);
+            $order = $this->orderRepository->findOrderById($orderId);
 
             // check shipping profile
             if($this->getParcelServicePreset($order->shippingProfileId) != null)
@@ -341,19 +341,19 @@ class ShippingController extends Controller
 
                     $shipmentItems = array();
                     if (    isset($response->setOrderResult) &&
-                            (!isset($response->setOrderResult->ErrorDataList) && count($response->setOrderResult->ErrorDataList) == 0))
+                        (!isset($response->setOrderResult->ErrorDataList) && count($response->setOrderResult->ErrorDataList) == 0))
                     {
 
                         if (!is_array($response->setOrderResult))
                         {
-                            $shipmentItems = $this->handleAfterRegisterShipment($response->setOrderResult);
+                            $shipmentItems = $this->handleAfterRegisterShipment($response->setOrderResult, $package->packageId);
                         }
                         else
                         {
                             /** @var setOrderResponseType $setOrderResult */
                             foreach ($response->setOrderResult as $setOrderResult)
                             {
-                                $shipmentItems = $this->handleAfterRegisterShipment($setOrderResult);
+                                $shipmentItems = $this->handleAfterRegisterShipment($setOrderResult, $package->packageId);
                             }
                         }
                         $this->createOrderResult[$orderId] = $this->buildResultArray(
@@ -382,9 +382,9 @@ class ShippingController extends Controller
             }
         }
 
-		// return all results to service
-		return $this->createOrderResult;
-	}
+        // return all results to service
+        return $this->createOrderResult;
+    }
 
     /**
      * @param Order $order
@@ -503,28 +503,28 @@ class ShippingController extends Controller
         return $this->storageRepository->uploadObject('ShippingTutorial', $key, $output);
     }
 
-	/**
-	 * Returns the parcel service preset for the given Id.
-	 *
-	 * @param int $parcelServicePresetId
-	 * @return ParcelServicePreset
-	 */
-	private function getParcelServicePreset($parcelServicePresetId)
-	{
-		/** @var ParcelServicePresetRepositoryContract $parcelServicePresetRepository */
-		$parcelServicePresetRepository = pluginApp(ParcelServicePresetRepositoryContract::class);
+    /**
+     * Returns the parcel service preset for the given Id.
+     *
+     * @param int $parcelServicePresetId
+     * @return ParcelServicePreset
+     */
+    private function getParcelServicePreset($parcelServicePresetId)
+    {
+        /** @var ParcelServicePresetRepositoryContract $parcelServicePresetRepository */
+        $parcelServicePresetRepository = pluginApp(ParcelServicePresetRepositoryContract::class);
 
-		$parcelServicePreset = $parcelServicePresetRepository->getPresetById($parcelServicePresetId);
+        $parcelServicePreset = $parcelServicePresetRepository->getPresetById($parcelServicePresetId);
 
-		if($parcelServicePreset)
-		{
-			return $parcelServicePreset;
-		}
-		else
-		{
-			return null;
-		}
-	}
+        if($parcelServicePreset)
+        {
+            return $parcelServicePreset;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     /**
      * Returns a formatted status message
@@ -559,32 +559,32 @@ class ShippingController extends Controller
      * @param $shipmentDate
      * @param $shipmentItems
      */
-	private function saveShippingInformation($orderId, $shipmentDate, $shipmentItems)
-	{
-		$transactionIds = array();
-		foreach ($shipmentItems as $shipmentItem)
-		{
-			$transactionIds[] = $shipmentItem['shipmentNumber'];
-			
-		}
+    private function saveShippingInformation($orderId, $shipmentDate, $shipmentItems)
+    {
+        $transactionIds = array();
+        foreach ($shipmentItems as $shipmentItem)
+        {
+            $transactionIds[] = $shipmentItem['shipmentNumber'];
+
+        }
 
         $shipmentAt = date(\DateTime::W3C, strtotime($shipmentDate));
         $registrationAt = date(\DateTime::W3C);
 
-		$data = [
-			'orderId' => $orderId,
-			'transactionId' => implode(',', $transactionIds),
-			'shippingServiceProvider' => 'ShippingTutorial',
-			'shippingStatus' => 'registered',
-			'shippingCosts' => 0.00,
-			'additionalData' => $shipmentItems,
-			'registrationAt' => $registrationAt,
-			'shipmentAt' => $shipmentAt
+        $data = [
+            'orderId' => $orderId,
+            'transactionId' => implode(',', $transactionIds),
+            'shippingServiceProvider' => 'ShippingTutorial',
+            'shippingStatus' => 'registered',
+            'shippingCosts' => 0.00,
+            'additionalData' => $shipmentItems,
+            'registrationAt' => $registrationAt,
+            'shipmentAt' => $shipmentAt
 
-		];
-		$this->shippingInformationRepositoryContract->saveShippingInformation(
-			$data);
-	}
+        ];
+        $this->shippingInformationRepositoryContract->saveShippingInformation(
+            $data);
+    }
 
     /**
      * Returns all order ids with shipping status 'open'
@@ -592,113 +592,113 @@ class ShippingController extends Controller
      * @param array $orderIds
      * @return array
      */
-	private function getOpenOrderIds($orderIds)
-	{
-		
-		$openOrderIds = array();
-		foreach ($orderIds as $orderId)
-		{
-			$shippingInformation = $this->shippingInformationRepositoryContract->getShippingInformationByOrderId($orderId);
-			if ($shippingInformation->shippingStatus == null || $shippingInformation->shippingStatus == 'open')
-			{
-				$openOrderIds[] = $orderId;
-			}
-		}
-		return $openOrderIds;
-	}
+    private function getOpenOrderIds($orderIds)
+    {
+
+        $openOrderIds = array();
+        foreach ($orderIds as $orderId)
+        {
+            $shippingInformation = $this->shippingInformationRepositoryContract->getShippingInformationByOrderId($orderId);
+            if ($shippingInformation->shippingStatus == null || $shippingInformation->shippingStatus == 'open')
+            {
+                $openOrderIds[] = $orderId;
+            }
+        }
+        return $openOrderIds;
+    }
 
 
-	/**
+    /**
      * Returns an array in the structure demanded by plenty service
      *
-	 * @param bool $success
-	 * @param string $statusMessage
-	 * @param bool $newShippingPackage
-	 * @param array $shipmentItems
-	 * @return array
-	 */
-	private function buildResultArray($success = false, $statusMessage = '', $newShippingPackage = false, $shipmentItems = [])
-	{
-		return [
-			'success' => $success,
-			'message' => $statusMessage,
-			'newPackagenumber' => $newShippingPackage,
-			'packages' => $shipmentItems,
-		];
-	}
+     * @param bool $success
+     * @param string $statusMessage
+     * @param bool $newShippingPackage
+     * @param array $shipmentItems
+     * @return array
+     */
+    private function buildResultArray($success = false, $statusMessage = '', $newShippingPackage = false, $shipmentItems = [])
+    {
+        return [
+            'success' => $success,
+            'message' => $statusMessage,
+            'newPackagenumber' => $newShippingPackage,
+            'packages' => $shipmentItems,
+        ];
+    }
 
-	/**
+    /**
      * Returns shipment array
      *
-	 * @param string $labelUrl
-	 * @param string $shipmentNumber
-	 * @return array
-	 */
-	private function buildShipmentItems($labelUrl, $shipmentNumber)
-	{
-		return  [
-			'labelUrl' => $labelUrl,
-			'shipmentNumber' => $shipmentNumber,
-		];
-	}
+     * @param string $labelUrl
+     * @param string $shipmentNumber
+     * @return array
+     */
+    private function buildShipmentItems($labelUrl, $shipmentNumber)
+    {
+        return  [
+            'labelUrl' => $labelUrl,
+            'shipmentNumber' => $shipmentNumber,
+        ];
+    }
 
-	/**
+    /**
      * Returns package info
      *
-	 * @param string $packageNumber
-	 * @param string $labelUrl
-	 * @return array
-	 */
-	private function buildPackageInfo($packageNumber, $labelUrl)
-	{
-		return [
-			'packageNumber' => $packageNumber,
-			'label' => $labelUrl
-		];
-	}
+     * @param string $packageNumber
+     * @param string $labelUrl
+     * @return array
+     */
+    private function buildPackageInfo($packageNumber, $labelUrl)
+    {
+        return [
+            'packageNumber' => $packageNumber,
+            'label' => $labelUrl
+        ];
+    }
 
-	/**
+    /**
      * Returns all order ids from request object
      *
-	 * @param Request $request
-	 * @param $orderIds
-	 * @return array
-	 */
-	private function getOrderIds(Request $request, $orderIds)
-	{
-		if (is_numeric($orderIds))
-		{
-			$orderIds = array($orderIds);
-		}
-		else if (!is_array($orderIds))
-		{
-			$orderIds = $request->get('orderIds');
-		}
-		return $orderIds;
-	}
+     * @param Request $request
+     * @param $orderIds
+     * @return array
+     */
+    private function getOrderIds(Request $request, $orderIds)
+    {
+        if (is_numeric($orderIds))
+        {
+            $orderIds = array($orderIds);
+        }
+        else if (!is_array($orderIds))
+        {
+            $orderIds = $request->get('orderIds');
+        }
+        return $orderIds;
+    }
 
-	/**
+    /**
      * Returns the package dimensions by package type
      *
-	 * @param $packageType
-	 * @return array
-	 */
-	private function getPackageDimensions($packageType): array
-	{
-		if ($packageType->length > 0 && $packageType->width > 0 && $packageType->height > 0)
-		{
-			$length = $packageType->length;
-			$width = $packageType->width;
-			$height = $packageType->height;
-		}
-		else
-		{
-			$length = null;
-			$width = null;
-			$height = null;
-		}
-		return array($length, $width, $height);
-	}
+     * @param $packageType
+     * @return array
+     */
+    private function getPackageDimensions($packageType): array
+    {
+        if ($packageType->length > 0 && $packageType->width > 0 && $packageType->height > 0)
+        {
+            $length = $packageType->length;
+            $width = $packageType->width;
+            $height = $packageType->height;
+        }
+        else
+        {
+            $length = null;
+            $width = null;
+            $height = null;
+        }
+        return array($length, $width, $height);
+    }
 
     /**
      * @param Request $request
@@ -719,9 +719,9 @@ class ShippingController extends Controller
             /** @var OrderShippingPackage $result */
             foreach ($results as $result)
             {
-                if ($this->storageRepository->doesObjectExist('', $result->packageNumber.'.pdf'))
+                if ($this->storageRepository->doesObjectExist('ShippingTutorial', $result->packageId.'.pdf'))
                 {
-                    $storageObject = $this->storageRepository->getObject('ShippingTutorial', $result->packageNumber.'.pdf');
+                    $storageObject = $this->storageRepository->getObject('ShippingTutorial', $result->packageId.'.pdf');
                     $labels[] = $storageObject->body;
                 }
             }
@@ -732,9 +732,10 @@ class ShippingController extends Controller
 
     /**
      * @param setOrderResponse $setOrderResponse
+     * @param int $packageId
      * @return array
      */
-    private function handleAfterRegisterShipment($setOrderResponse)
+    private function handleAfterRegisterShipment($setOrderResponse, $packageId)
     {
         $shipmentItems = array();
 
@@ -745,17 +746,16 @@ class ShippingController extends Controller
 
         if(strlen($setOrderResponse->LabelResponse->LabelPDF) > 0 && strlen($shipmentNumber) > 0) {
             $storageObject = $this->saveLabelToS3(
-            /*base64_decode($setOrderResponse->LabelResponse->LabelPDF),*/
                 '',
-                $shipmentNumber . '.pdf',
-                $setOrderResponse->LabelResponse->LabelPDF);
+                $packageId . '.pdf',
+                base64_decode($setOrderResponse->LabelResponse->LabelPDF));
 
             $shipmentItems[] = $this->buildShipmentItems(
                 'path_to_pdf_in_S3',
                 $shipmentNumber);
 
             $this->orderShippingPackage->updateOrderShippingPackage(
-                1,
+                $packageId,
                 $this->buildPackageInfo(
                     $shipmentNumber,
                     $storageObject->key)
