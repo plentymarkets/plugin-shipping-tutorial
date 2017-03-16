@@ -397,16 +397,17 @@ class ShippingController extends Controller
         $address = $order->deliveryAddress;
 
         $addressData = [
-            ($address->firstName == '' && $address->lastName == '' ? '' : $address->companyName),
+            ($address->firstName == '' && $address->lastName == '' ? '' : $address->companyName), //$Company
             '', /* gender */
-            ($address->firstName == '' && $address->lastName == '' ? $address->companyName : $address->firstName.' '.$address->lastName),
-            $address->street,
-            $address->houseNumber,
-            $address->country->isoCode3,
-            $address->postalCode,
-            $address->town,
-            $address->phone,
-            $address->email
+            ($address->firstName == '' && $address->lastName == '' ? $address->companyName : $address->firstName.' '.$address->lastName), //$Name
+            $address->street, //$Street
+            $address->houseNumber, //$HouseNo
+            $address->country->isoCode3, //$Country
+            $address->postalCode, //$ZipCode
+            $address->town, //$City
+            '', //$State
+            $address->phone, //$Phone
+            $address->email //$Mail
         ];
 
         $shipAddress = pluginApp(AddressType::class,
@@ -467,37 +468,40 @@ class ShippingController extends Controller
     }
 
 
-	/**
+    /**
      * Retrieves the label file from a given URL and saves it in S3 storage
      *
-	 * @param $labelUrl
-	 * @param $key
-	 * @return StorageObject
-	 */
-	private function saveLabelToS3($labelUrl, $key)
-	{
-		$ch = curl_init();
+     * @param $labelUrl
+     * @param $key
+     * @param String $output
+     * @return StorageObject
+     */
+    private function saveLabelToS3($labelUrl, $key, $output = null)
+    {
+        if($output == null)
+        {
+            $ch = curl_init();
 
-		// Set URL to download
-		curl_setopt($ch, CURLOPT_URL, $labelUrl);
+            // Set URL to download
+            curl_setopt($ch, CURLOPT_URL, $labelUrl);
 
-		// Include header in result? (0 = yes, 1 = no)
-		curl_setopt($ch, CURLOPT_HEADER, 0);
+            // Include header in result? (0 = yes, 1 = no)
+            curl_setopt($ch, CURLOPT_HEADER, 0);
 
-		// Should cURL return or print out the data? (true = return, false = print)
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            // Should cURL return or print out the data? (true = return, false = print)
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-		// Timeout in seconds
-		curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+            // Timeout in seconds
+            curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 
-		// Download the given URL, and return output
-		$output = curl_exec($ch);
+            // Download the given URL, and return output
+            $output = curl_exec($ch);
 
-		// Close the cURL resource, and free system resources
-		curl_close($ch);
-		return $this->storageRepository->uploadObject('ShippingTutorial', $key, $output);
+            // Close the cURL resource, and free system resources
+            curl_close($ch);
+        }
 
-	}
+        return $this->storageRepository->uploadObject('ShippingTutorial', $key, $output);
 
 	/**
 	 * Returns the parcel service preset for the given Id.
@@ -742,8 +746,9 @@ class ShippingController extends Controller
         if(strlen($setOrderResponse->LabelResponse->LabelPDF) > 0 && strlen($shipmentNumber) > 0) {
             $storageObject = $this->saveLabelToS3(
             /*base64_decode($setOrderResponse->LabelResponse->LabelPDF),*/
-                $setOrderResponse->LabelResponse->LabelPDF,
-                $shipmentNumber . '.pdf');
+                '',
+                $shipmentNumber . '.pdf',
+                $setOrderResponse->LabelResponse->LabelPDF);
 
             $shipmentItems[] = $this->buildShipmentItems(
                 'path_to_pdf_in_S3',
