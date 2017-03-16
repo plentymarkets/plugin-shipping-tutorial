@@ -405,7 +405,6 @@ class ShippingController extends Controller
             $address->country->isoCode3,
             $address->postalCode,
             $address->town,
-            $address->state,
             $address->phone,
             $address->email
         ];
@@ -533,7 +532,9 @@ class ShippingController extends Controller
     private function getStatusMessage($response)
     {
         $msg = '';
-        if(isset($response->setOrderResult->ErrorDataList->ErrorDataType))
+        if( isset($response->setOrderResult) &&
+            isset($response->setOrderResult->ErrorDataList) &&
+            isset($response->setOrderResult->ErrorDataList->ErrorDataType))
         {
             foreach($response->setOrderResult->ErrorDataList->ErrorDataType as $error)
             {
