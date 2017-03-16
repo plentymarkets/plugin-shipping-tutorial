@@ -3,9 +3,12 @@
 namespace ShippingTutorial\Migrations;
 
 use Plenty\Modules\Order\Shipping\ServiceProvider\Contracts\ShippingServiceProviderRepositoryContract;
+use Plenty\Plugin\Log\Loggable;
+
 
 class CreateShippingServiceProvider
 {
+    use loggable;
 	/*
 	 * @var ShippingServiceProviderRepositoryContract $shippingServiceProviderRepository
 	 */
@@ -24,6 +27,17 @@ class CreateShippingServiceProvider
 	 */
 	public function run()
 	{
-		$this->shippingServiceProviderRepository->saveShippingServiceProvider('ShippingTutorial','plentymarkets ShippingTutorial');
+        try
+        {
+            $this->shippingServiceProviderRepository->saveShippingServiceProvider(
+                'ShippingTutorial',
+                'plentymarkets ShippingTutorial');
+
+        }
+        catch (\Exception $e)
+        {
+            $this->getLogger('ShippingTutorial')->critical('Could not save or update shipping service provider');
+        }
+
 	}
 }
