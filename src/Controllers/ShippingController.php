@@ -478,8 +478,7 @@ class ShippingController extends Controller
      */
     private function saveLabelToS3($labelUrl, $key, $output = null)
     {
-        if($output == null)
-        {
+        if ($output == null) {
             $ch = curl_init();
 
             // Set URL to download
@@ -502,6 +501,7 @@ class ShippingController extends Controller
         }
 
         return $this->storageRepository->uploadObject('ShippingTutorial', $key, $output);
+    }
 
 	/**
 	 * Returns the parcel service preset for the given Id.
