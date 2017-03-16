@@ -33,6 +33,8 @@ use ShippingTutorial\API\setOrderResponse;
 use ShippingTutorial\API\setOrderResponseType;
 use ShippingTutorial\API\ShipServiceType;
 use ShippingTutorial\API\UserCredentialType;
+use Plenty\Plugin\Log\Loggable;
+
 
 /**
  * Class ShippingController
@@ -40,7 +42,10 @@ use ShippingTutorial\API\UserCredentialType;
 class ShippingController extends Controller
 {
 
-	/**
+    use loggable;
+
+
+    /**
 	 * @var Request
 	 */
 	private $request;
@@ -519,16 +524,29 @@ class ShippingController extends Controller
 		}
 	}
 
-	/**
+    /**
      * Returns a formatted status message
+     * @TODO retrieve from settings if logger should be used
      *
-	 * @param array $response
-	 * @return string
-	 */
-	private function getStatusMessage($response)
-	{
-		return 'Code: '.$response['status']; // should contain error code and descriptive part
-	}
+     * @param array $response
+     * @return string
+     */
+    private function getStatusMessage($response)
+    {
+        $msg = '';
+        if(isset($response->setOrderResult->ErrorDataList->ErrorDataType))
+        {
+            foreach($response->setOrderResult->ErrorDataList->ErrorDataType as $error)
+            {
+                $msg .= 'Code: '.$error->ErrorCode.'; Id: '.$error->ErrorID.'; Message: '.$error->ErrorMsgLong;
+            }
+        }
+
+        // push error to logger
+        $this->getLogger('ShippingTutorial')->critical('register shipment: '.$msg);
+
+        return $msg; // should contain error code and descriptive part
+    }
 
     /**
      * Saves the shipping information
