@@ -2,6 +2,7 @@
 
 namespace ShippingTutorial\Controllers;
 
+use Plenty\Modules\Order\Shipping\Package\Models\OrderShippingPackage;
 use ShippingTutorial\API\setOrder;
 use Plenty\Modules\Account\Address\Contracts\AddressRepositoryContract;
 use Plenty\Modules\Account\Address\Models\Address;
@@ -207,6 +208,9 @@ class ShippingController extends Controller
 
 		foreach($orderIds as $orderId)
 		{
+            /**
+             * --- ORDER ---
+             */
 			$order = $this->orderRepository->findOrderById($orderId);
 
             // check shipping profile
@@ -214,6 +218,9 @@ class ShippingController extends Controller
             {
                 // gathering required data for registering the shipment
 
+                /**
+                 * --- ADDRESS ---
+                 */
                 $shipAddress = $this->getShipAddressFromOrder($order);
 
                 // reads sender data from plugin config. this is going to be changed in the future to retrieve data from backend ui settings
@@ -228,7 +235,9 @@ class ShippingController extends Controller
                 //TODO get service from profile/settings
                 $shipService = ShipServiceType::Classic;
 
-                // gets order shipping packages from current order
+                /**
+                 * --- SHIPPING PACKAGE --- gets order shipping packages from current order
+                 */
                 $packages = $this->orderShippingPackage->listOrderShippingPackages($order->id);
 
                 $orderDataList = [];
@@ -237,7 +246,7 @@ class ShippingController extends Controller
                 foreach($packages as $package)
                 {
                     // Weight
-                    $weight = 0.2; // Fallback minimum weight
+                    $weight = 0.2; //Fallback minimum weight
 
                     if ($package->weight) {
                         $weight = $package->weight / 1000;
@@ -668,6 +677,35 @@ class ShippingController extends Controller
 		}
 		return array($length, $width, $height);
 	}
+
+    /**
+     * @param Request $request
+     * @param array $orderIds
+     * @return array
+     */
+    public function getLabels(Request $request, $orderIds)
+    {
+        /**
+         * --- S3 ---
+         */
+
+        $orderIds = $this->getOrderIds($request, $orderIds);
+        $labels = array();
+        foreach ($orderIds as $orderId)
+        {
+            $results = $this->orderShippingPackage->listOrderShippingPackages($orderId);
+            /** @var OrderShippingPackage $result */
+            foreach ($results as $result)
+            {
+                if ($this->storageRepository->doesObjectExist('', $result->packageNumber.'.pdf'))
+                {
+                    $storageObject = $this->storageRepository->getObject('ShippingTutorial', $result->packageNumber.'.pdf');
+                    $labels[] = $storageObject->body;
+                }
+            }
+        }
+        return $labels;
+    }
 
 
     /**
