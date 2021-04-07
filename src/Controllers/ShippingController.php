@@ -719,9 +719,11 @@ class ShippingController extends Controller
             /** @var OrderShippingPackage $result */
             foreach ($results as $result)
             {
-                if ($this->storageRepository->doesObjectExist('ShippingTutorial', $result->packageId.'.pdf'))
+                $labelKey = explode('/', $result->labelPath)[1];
+
+                if ($this->storageRepository->doesObjectExist('ShippingTutorial', $labelKey))
                 {
-                    $storageObject = $this->storageRepository->getObject('ShippingTutorial', $result->packageId.'.pdf');
+                    $storageObject = $this->storageRepository->getObject('ShippingTutorial', $labelKey);
                     $labels[] = $storageObject->body;
                 }
             }
